@@ -251,7 +251,7 @@ main>section>footer>time::before {
 		</footer>
 	</form>
 </dialog>
-<main><section id="1707517025349" style="display: block;"><header><h1>About SkeleWiki</h1></header><pre hidden="">SkeleWiki is a super hackable, self-replicating web app that lets you create inter-linking pages formatted with Markdown. All data created with SkeleWiki is simply stored directly as HTML on the page, and the code within the HTML file is not minified at all, making it easier to simply crack open in a text editor and modify however you wish!
+<main><section id="1707517025349" style="display: block;"><header><h1>About SkeleWiki</h1></header><pre>SkeleWiki is a super hackable, self-replicating web app that lets you create inter-linking pages formatted with Markdown. All data created with SkeleWiki is simply stored directly as HTML on the page, and the code within the HTML file is not minified at all, making it easier to simply crack open in a text editor and modify however you wish!
 
 It's page management with Markdown formatting and a simple search bar all rolled up into a single HTML file that's _less than 32 kilobytes!_
 
@@ -288,17 +288,7 @@ And that's pretty much it!
 - Search prioritizes exact matches over case-insensitive ones and will display matching pages in order by where the match is found, prioritizing page names over page text, and only the text content of the parsed Markdown is searched when looking for results within the page text.
 - Very large amounts of content on a page and very large numbers of pages may affect the performance of your SkeleWiki because it just uses and manipulates the raw DOM.
 - Only the Markdown of each page is saved and can be found directly in the HTML file within a `pre` tag in the page's `section` tag. It's parsed into formatted HTML that displays when the page is loaded and the JavaScript runs.
-- All pages are on the same level and display in the wiki nav bar.</pre><article><p>SkeleWiki is a super hackable, self-replicating web app that lets you create inter-linking pages formatted with Markdown. All data created with SkeleWiki is simply stored directly as HTML on the page, and the code within the HTML file is not minified at all, making it easier to simply crack open in a text editor and modify however you wish!</p>
-<p>It's page management with Markdown formatting and a simple search bar all rolled up into a single HTML file that's <em>less than 32 kilobytes!</em></p>
-<h2>How to Use</h2>
-
-<p>Just download the HTML file and open it in a browser to get started. It's pretty simple:</p>
-<ul><li>Use the "Settings" button to change the wiki's name, description, and CSS, then push "Save" to make your changes.</li><li>Create a new page by using the "New Page" button. This will create an empty page that you can start editing right away.</li><li>Set a page title in the "Name" field and write some text for the page with Markdown formatting.</li><li>In addition to Markdown, you can link between pages using wiki link format by putting the (case insensitive) page name in 2 square braces [[like this]]! If you want the link to have different text than the page's name, then put the page name first then the text to display after a vertical bar [[other page|like this]]!</li><li>If you have multiple pages, you can change the order they display in the navigation by changing the Sort Position.</li><li>The page in the <code>0</code> position will be the "home" page of your SkeleWiki that is displayed when the file loads or when the Wiki Title is clicked.</li><li>Use "Save" to save the page and view the page.</li><li>Use "Cancel" to prevent any changes from being saved (results in an empty page if it's newly created).</li><li>Use "Delete" to remove the page and navigation entry.</li><li>Search for text in your pages using the Search bar. Check the Particularities below for exactly how the results are found &amp; sorted.</li><li>Click the "Edit" button at the bottom of a page to change that page. The date at the bottom of the page will be updated when you save your changes.</li><li>Save your changes to a new HTML file by using the "Save" button (or <kbd>Ctrl</kbd>+<kbd>S</kbd>). The HTML file defaults to a lowercase version of your wiki's name with any non-alphanumeric characters converted to underscores <code>like_this.html</code>.</li></ul>
-
-<p>And that's pretty much it!</p>
-<h3>Particularities</h3>
-
-<ul><li>New pages are always added to the end of the page order, and thus the end of the nav bar.</li><li>Pages without a name cannot be linked to and display in the navigation as "No content."</li><li>Navigating to a different page while editing will change the page <em>immediately</em> and <strong>discard any unsaved changes</strong> to the page.</li><li>When editing a page, pressing <kbd>Tab</kbd> in the Markdown Content text area (also the Wiki CSS text area in Settings) will type a <code>Tab</code> character instead of changing focus to the next form element.</li><li>You <em>can</em> use HTML in the wiki name and description, but should you?</li><li>The Wiki CSS is actually the literal contents of the <code>&lt;style&gt;</code> tag in the HTML's head. You can change it however you wish, but it might affect the wiki's page structure if you remove too much stuff.</li><li>Every page exists in the file's HTML, but all pages except for the current one are hidden by default.</li><li>The "Updated" timestamp at the bottom of a page is set to <em>your</em> local date and time.</li><li>Hover over the "Updated" timestamp at the bottom of a page to see the timestamp of when the page was first created, i.e. the moment "New Page" was pressed.</li><li>Search prioritizes exact matches over case-insensitive ones and will display matching pages in order by where the match is found, prioritizing page names over page text, and only the text content of the parsed Markdown is searched when looking for results within the page text.</li><li>Very large amounts of content on a page and very large numbers of pages may affect the performance of your SkeleWiki because it just uses and manipulates the raw DOM.</li><li>Only the Markdown of each page is saved and can be found directly in the HTML file within a <code>pre</code> tag in the page's <code>section</code> tag. It's parsed into formatted HTML that displays when the page is loaded and the JavaScript runs.</li><li>All pages are on the same level and display in the wiki nav bar.</li></ul></article><footer><time title="Created 2/9/2024, 3:17:05 PM">2/9/2024, 3:20:57 PM</time> <button class="dull editButton" onclick="app.edit(1707517025349)">Edit</button></footer></section><section id="1707517176500" style=""><header><h1>Markdown Support</h1></header><pre hidden="">Click the "Edit" button at the bottom of the page to see the markdown source!
+- All pages are on the same level and display in the wiki nav bar.</pre><article hidden="true"></article><footer><time title="Created 2/9/2024, 3:17:05 PM">2/9/2024, 3:20:57 PM</time> <button class="dull editButton" onclick="app.edit(1707517025349)">Edit</button></footer></section><section id="1707517176500" style=""><header><h1>Markdown Support</h1></header><pre>Click the "Edit" button at the bottom of the page to see the markdown source!
 
 ---
 
@@ -447,98 +437,7 @@ I want to type *this text surrounded by asterisks* but I don't want it to be
 in italics, so I do this: \*this text surrounded by asterisks\*.
 
 Your computer crashed? Try sending a
-&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt;</pre><article><p>Click the "Edit" button at the bottom of the page to see the markdown source!
-</p><hr>
-<!--This means we can use HTML elements in Markdown, such as the comment
-element, and they won't be affected by a markdown parser. However, if you
-create an HTML element in your markdown file, you cannot use markdown syntax
-within that element's contents.--><p></p>
-<h1>This is an <code>&lt;h1&gt;</code></h1>
-<h2>This is an <code>&lt;h2&gt;</code></h2>
-<h3>This is an <code>&lt;h3&gt;</code></h3>
-<h4>This is an <code>&lt;h4&gt;</code></h4>
-<h5>This is an <code>&lt;h5&gt;</code></h5>
-<h6>This is an <code>&lt;h6&gt;</code></h6>
-
-<h1>This is an h1</h1>
-
-<h2>This is an h2</h2>
-
-<em>This text is in italics.</em>
-<p><em>And so is this text.</em></p>
-<strong>This text is in bold.</strong>
-<p><strong>And so is this text.</strong></p>
-<em><strong>This text is in both.</strong></em>
-<strong><em>As is this!</em></strong>
-<em><strong>And this!</strong></em>
-
-<p><del>This text is rendered with strikethrough.</del></p>
-<p>This is a paragraph. I'm typing in a paragraph isn't this fun?</p>
-<p>Now I'm in paragraph 2.
-I'm still in paragraph 2 too!</p>
-
-<p>I'm in paragraph three!</p>
-<p>I end with two spaces (highlight me to see them).</p>
-<p>There's a <code>&lt;br /&gt;</code>  
-above me!</p>
-<blockquote>
-<p>This is a block quote. You can either</p>
-<p>manually wrap your lines and put a <code>&gt;</code> before every line or you can let your lines get really long and wrap on their own.</p>
-<p>It doesn't make a difference so long as they start with a <code>&gt;</code>.
-</p></blockquote><p></p>
-<blockquote>
-<p>You can only use one level</p>
-<p>of indentation?</p>
-<p>Oh well!
-</p></blockquote><p></p>
-<ul><li>Item</li><li>Item</li><li>Another item</li></ul>
-
-<p>or</p>
-<ul><li>Item</li><li>Item</li><li>One more item</li></ul>
-
-<p>or</p>
-<ul><li>Item</li><li>Item</li><li>One last item</li></ul>
-
-<ul><li>List</li><li>Indentation</li><li>also</li><li>works!</li><li>(with</li><li>two</li><li>spaces)</li></ul>
-
-<ol><li>Item one</li><li>Item two</li><li>Item three</li></ol>
-
-<ol><li>Item one</li><li>Item two</li><li>Item three</li></ol>
-
-<ol><li>Item one</li><li>Item two</li><li>Item three</li></ol>
-  <ul><li>mixing</li><li>Sub-list types</li></ul>
-<ol><li>Item four</li></ol>
-
-<p>Boxes below without the 'x' are unchecked HTML checkboxes.
-</p><ul><li><input type="checkbox" disabled=""> First task to complete.</li><li><input type="checkbox" disabled=""> Second task that needs done<p></p></li></ul>
-<p>This checkbox below will be a checked HTML checkbox.</p>
-<ul><li><input type="checkbox" disabled="" checked=""> This task has been completed</li></ul>
-
-<p></p><pre><code>This is code
-        So is this
-</code></pre><p></p>
-<p></p><pre><code class="language-javascript">function canLabelCode() {
-    return true;
-}
-</code></pre><p></p>
-<p>```
-Here's some &lt;Escaped text!&gt;
-```</p>
-<p>John didn't even know what the <code>go_to()</code> function did!
-</p><hr><hr><hr><hr>
-<a href="http://test.com/">Click me!</a><p></p>
-<p><a href="http://test.com/" title="Link to Test.com">Click me!</a></p>
-<p><a href="/music/">Go to music</a>.</p>
-<ul><li><a href="#heading">Heading</a></li><li><a href="#another-heading">Another heading</a></li><li><a href="#chapter">Chapter</a></li><li><a href="#subchapter-h3-">Subchapter &lt;h3 /&gt;</a></li></ul>
-
-<p><img src="http://imgur.com/myimage.jpg" alt="This is the alt-attribute for my image" title="An optional title"></p>
-<p><a href="http://testwebsite.com/">http://testwebsite.com/</a> is equivalent to
-<a href="http://testwebsite.com/">http://testwebsite.com/</a></p>
-<p><a href="mailto:foo@bar.com">foo@bar.com</a></p>
-<p>I want to type <em>this text surrounded by asterisks</em> but I don't want it to be
-in italics, so I do this: *this text surrounded by asterisks*.</p>
-<p>Your computer crashed? Try sending a
-<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd></p></article><footer><time title="Created 2/9/2024, 3:19:36 PM">2/9/2024, 3:20:16 PM</time> <button class="dull editButton" onclick="app.edit(1707517176500)">Edit</button></footer></section><section id="1707517259013" style=""><header><h1>Hacking SkeleWiki</h1></header><pre hidden="">Since it's literally just an HTML file with all its code visibly formatted in the way the developer writes it, you can just change the content or behavior! All you need is a text editor and a basic understanding of web development (HTML, CSS, and JavaScript).
+&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt;</pre><article hidden="true"></article><footer><time title="Created 2/9/2024, 3:19:36 PM">2/9/2024, 3:20:16 PM</time> <button class="dull editButton" onclick="app.edit(1707517176500)">Edit</button></footer></section><section id="1707517259013" style=""><header><h1>Hacking SkeleWiki</h1></header><pre>Since it's literally just an HTML file with all its code visibly formatted in the way the developer writes it, you can just change the content or behavior! All you need is a text editor and a basic understanding of web development (HTML, CSS, and JavaScript).
 
 The only HTML altered by the app is:
 
@@ -555,14 +454,7 @@ Pretty much anywhere else is untouched by the JavaScript and can be modified. If
   - Don't want it in the HTML at all? Then you'll need to update the code to stop the `&lt;time&gt;` elements from being created and then remove them from your HTML. It's set in the `app.add()` method and modified in the `app.edit()` method.
 - Need SkeleWiki in your own language? Just modify the UI text in the HTML file!
 - Want to restructure the whole app? You can change the CSS and HTML completely if you need to! Just check the code for any expected structure patterns first so you don't break anything.
-- Don't like the Markdown parser? Replace it! As long as whatever parser you use has its parse function set to `window.md()`, SkeleWiki should handle it fine!</pre><article><p>Since it's literally just an HTML file with all its code visibly formatted in the way the developer writes it, you can just change the content or behavior! All you need is a text editor and a basic understanding of web development (HTML, CSS, and JavaScript).</p>
-<p>The only HTML altered by the app is:</p>
-<ul><li>The <code>&lt;a id="name"&gt;</code> element in the wiki header</li><li>The <code>&lt;span id="desc"&gt;</code> element in the wiki header</li><li>The CSS within the <code>&lt;style id="css"&gt;</code> element in the HTML <code>head</code></li><li>The HTML content within the <code>&lt;main&gt;</code> element.</li></ul>
-
-<p>Pretty much anywhere else is untouched by the JavaScript and can be modified. If you need to add meta tags to the head or additional code, you can just do that. In addition, all the app functions can be accessed through <code>window</code> in JavaScript under the <code>app</code> Object. There are also a couple global helper methods in there to keep the code small.</p>
-<h3>Ideas</h3>
-
-<ul><li>Don't want your updated time visible on a page? Find the <code>main&gt;section&gt;footer&gt;time</code> entry in the Wiki CSS and add <code>display: none;</code> to hide it.</li><li>Don't want it in the HTML at all? Then you'll need to update the code to stop the <code>&lt;time&gt;</code> elements from being created and then remove them from your HTML. It's set in the <code>app.add()</code> method and modified in the <code>app.edit()</code> method.</li><li>Need SkeleWiki in your own language? Just modify the UI text in the HTML file!</li><li>Want to restructure the whole app? You can change the CSS and HTML completely if you need to! Just check the code for any expected structure patterns first so you don't break anything.</li><li>Don't like the Markdown parser? Replace it! As long as whatever parser you use has its parse function set to <code>window.md()</code>, SkeleWiki should handle it fine!</li></ul></article><footer><time title="Created 2/9/2024, 3:20:59 PM">2/9/2024, 3:21:19 PM</time> <button class="dull editButton" onclick="app.edit(1707517259013)">Edit</button></footer></section></main>
+- Don't like the Markdown parser? Replace it! As long as whatever parser you use has its parse function set to `window.md()`, SkeleWiki should handle it fine!</pre><article hidden="true"></article><footer><time title="Created 2/9/2024, 3:20:59 PM">2/9/2024, 3:21:19 PM</time> <button class="dull editButton" onclick="app.edit(1707517259013)">Edit</button></footer></section></main>
 <script defer="">(() => {
 		const w = window;
 		w.q = (s, e) => (e ?? document).querySelector(s);
@@ -763,6 +655,7 @@ Pretty much anywhere else is untouched by the JavaScript and can be modified. If
 			},
 			save() {
 				const name = q('#wiki #name');
+				app.go();
 				const pp = app.pages();
 				pp.forEach(p => {
 					const txt = q('pre', p).removeAttribute('hidden');
@@ -772,7 +665,6 @@ Pretty much anywhere else is untouched by the JavaScript and can be modified. If
 					const edit = gebi(`edit${p.id}`);
 					if (edit) edit.parentElement.removeChild(edit);
 				});
-				app.go();
 				document.title = name;
 				const html = /*html*/`<!DOCTYPE html><html lang="en">
 <head>${document.head.innerHTML}</head>
