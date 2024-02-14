@@ -1,60 +1,59 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>javascript:app.go()</title>
-<style id="css">:root {
+<meta name="version" content="1.0.0">
+<meta name="application-name" content="SkeleWiki">
+<title>SkeleWiki</title>
+<style id="css">
+:root {
 	--text: #000;
 	--font: serif;
-	--size: 12pt;
-	--space: 0.5rem;
-	--bg: cornsilk;
-	--accent1: olivedrab;
-	--accent2: rebeccapurple;
-	--dull: bisque;
-	--bad: tomato;
-	--button-border: none;
+	--size: 13pt;
+	--space: .5rem;
+	--pad: var(--space) calc(var(--space) * 2);
+	--bg: #ffd;
+	--accent1: #682;
+	--accent2: #639;
+	--dull: #eda;
+	--bad: #f64;
+	--link-style: underline;
+	--btn-pad: calc(var(--space) / 2) var(--space);
+	--btn-border: none;
 	--rounded: 3px;
 	--max-width: 1200px;
 }
 * {
+	box-sizing: border-box;
 	font-family: var(--font);
 	color: var(--text);
 	font-size: var(--size);
 	line-height: 1.15em;
-	background-color: transparent;
+	background: transparent;
 }
 * * {
 	font-family: inherit;
 	color: inherit;
 	font-size: inherit;
-	font-weight: inherit;
 	line-height: inherit;
 }
 *[hidden],
 dialog:not([open]),
 main>section,
-#searchResults:empty {
+#results:empty {
 	display: none;
 }
 dialog[open] {
 	display: block;
 	background: var(--bg);
 }
-html {
-	background-color: var(--bg);
-}
-body {
-	background: transparent;
-}
+html {background: var(--bg)}
 body>header,
-#settings {
-	padding: var(--space) 0.25rem;
-	width: 100%;
-	max-width: var(--max-width);
-}
+#settings,
 main {
-	padding: var(--space);
+	padding: var(--pad);
+	width: 100%;
 	max-width: var(--max-width);
 }
 nav ul li a:empty::after,
@@ -62,41 +61,36 @@ main:empty::after,
 main>section article:empty::after {
 	content: "No content";
 }
-main>section>header>h1,
-form h1 {
-	margin: 0 0 var(--space);
-}
-*+* {
-	margin: var(--space) 0 0;
-}
-main>section+section {
-	margin: 0;
-}
-#wiki a,
-#wiki a * {
-	color: var(--accent1);
-}
-#wiki #desc {
-	margin-left: var(--space);
-}
+*+* {margin: var(--space) 0 0}
+main>section+section {margin: 0}
+#wiki a {color: var(--accent1)}
+#wiki #desc {margin-left: var(--space)}
 #actions {
 	display: flex;
 	gap: var(--space);
 	align-items: center;
 }
-h1 {
-	font-size: 2.2rem;
+#actions>* {margin: 0}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: calc(var(--space) * 3) 0;
 }
-h2 {
-	font-size: 1.8rem;
+main,
+main>section>h1,
+form h1 {
+	margin-top: 0;
 }
+h1 {font-size: 2.2rem}
+h2 {font-size: 1.8rem}
 h3,
 #wiki #name {
 	font-size: 1.5rem;
 }
-h4 {
-	font-size: 1.15rem;
-}
+h4 {font-size: 1.15rem}
 h1,
 h2,
 h3,
@@ -109,32 +103,27 @@ h5,
 h6 {
 	font-style: italic;
 }
-h6 {
-	font-weight: normal;
-}
+h6 {font-weight: normal}
 a {
 	color: var(--accent2);
+	text-decoration: var(--link-style);
 }
 button {
-	background-color: var(--accent1);
-	color: white;
-	border: var(--button-border);
+	background: var(--accent1);
+	color: #fff;
+	border: var(--btn-border);
 	border-radius: var(--rounded);
-	padding: 0.25rem 0.5rem;
+	padding: var(--btn-pad);
 	cursor: pointer;
 	font-weight: 500;
 }
-button.other {
-	background-color: var(--accent2);
-}
+button.other {background: var(--accent2)}
 button.dull {
-	background-color: var(--dull);
+	background: var(--dull);
 	font-weight: normal;
 	color: var(--text);
 }
-button.bad {
-	background-color: var(--bad);
-}
+button.bad {background: var(--bad)}
 label {
 	display: block;
 	font-weight: 500;
@@ -143,14 +132,13 @@ input,
 textarea,
 select,
 option {
-	border-radius: 0px;
-	padding: var(--space);
+	padding: var(--btn-pad);
 	background: var(--bg);
 	border: 1px solid var(--text);
 	border-radius: var(--rounded);
 }
 textarea {
-	height: 300px;
+	min-height: 300px;
 	width: 100%;
 	max-width: 600px;
 }
@@ -164,35 +152,30 @@ nav ul li {
 	display: inline-block;
 	margin: var(--space);
 }
-.sm {
-	font-size: 0.8em;
-}
-#searchBar {
-	position: relative;
-}
-#searchResults {
+.sm {font-size: .8em}
+#search {position: relative}
+#results {
 	position: absolute;
 	background: var(--bg);
 	border: 1px solid #000;
-	top: calc(var(--size) + .5rem + 2px);
+	top: calc(var(--size) + .25rem);
 	left: 0;
 	width: 100%;
 	max-height: 300px;
 	overflow-y: auto;
 	overflow-x: hidden;
-	padding: 3px;
-	border-radius: 3px;
-	z-index: 10;
+	padding: 0;
+	border-radius: var(--rounded);
+	z-index: 9;
 }
-#searchResults a {
+#results a {
 	display: block;
-	box-sizing: border-box;
 	width: 100%;
-	padding: 6px 10px;
-	margin: 2px 0;
+	padding: var(--btn-pad);
+	margin: 0;
 	color: #000;
 }
-#searchResults a:hover {
+#results a:hover {
 	color: #fff;
 	background: var(--accent2);
 }
@@ -200,58 +183,43 @@ mark {
 	background: var(--accent1);
 	color: white;
 }
-main>section>footer>time {
-	cursor: help;
-}
-main>section>footer>time::before {
-	content: 'Updated ';
-}</style>
+main>section>footer>time {cursor: help}
+main>section>footer>time::before {content: 'Updated '}
+</style>
 </head>
 <body>
 <header>
 	<section id="wiki">
-		<a href="javascript:app.go()" id="name">SkeleWiki</a>
+		<a href="javascript:go()" id="name">SkeleWiki</a>
 		<span id="desc">A <em>dead</em> simple tool to make bare <em>bones</em> multi-page websites in a single HTML file.</span>
 	</section>
 	<section id="actions">
-		<div id="searchBar" style="flex:1">
-			<label>
-				<strong>Search</strong> <input type="search" oninput="app.search(event.target.value)">
-			</label>
-			<div id="searchResults"></div>
+		<div id="search" style="flex:1">
+			<input type="search" placeholder="Search" oninput="search(event.target.value)" onfocus="event.target.value && search(event.target.value)">
+			<div id="results"></div>
 		</div>
 		<div style="flex:2;text-align:right">
-			<button id="settingsButton" class="dull" onclick="app.settings()">Settings</button>
-			<button id="newPageButton" class="other" onclick="app.add()">New Page</button>
-			<button id="saveButton" onclick="app.save()">Save</button>
+			<button id="settingsBtn" class="dull" onclick="settings()">Settings</button>
+			<button id="newBtn" class="other" onclick="add()">New Page</button>
+			<button id="saveBtn" onclick="save()">Save</button>
 		</div>
 	</section>
-	<nav>
-		<ul><li><a href="javascript:app.go('1707517025349')" id="nav1707517025349">About SkeleWiki</a></li><li><a href="javascript:app.go('1707517176500')" id="nav1707517176500">Markdown Support</a></li><li><a href="javascript:app.go('1707517259013')" id="nav1707517259013">Hacking SkeleWiki</a></li></ul>
-	</nav>
+	<nav><ul></ul></nav>
 </header>
 <dialog id="settings">
 	<h1>Settings</h1>
-	<form method="dialog" onsubmit="app.update(event.target)">
-		<label>
-			Wiki Name<br>
-			<input name="name">
-		</label>
-		<label>
-			Wiki Description<br>
-			<input name="desc">
-		</label>
-		<label>
-			Wiki CSS<br>
-			<textarea name="css"></textarea>
-		</label>
+	<form method="dialog" onsubmit="update(event.target)">
+		<label>Wiki Name<br><input name="name"></label>
+		<label>Wiki Description<br><input name="desc"></label>
+		<label>Wiki CSS<br><textarea name="css"></textarea></label>
 		<footer>
 			<button type="submit">Save</button>
-			<button type="button" class="dull" onclick="app.settings(true)">Cancel</button>
+			<button type="button" class="dull" onclick="settings(true)">Cancel</button>
 		</footer>
 	</form>
 </dialog>
-<main><section id="1707517025349" style="display: block;"><header><h1>About SkeleWiki</h1></header><pre>SkeleWiki is a super hackable, self-replicating web app that lets you create inter-linking pages formatted with Markdown. All data created with SkeleWiki is simply stored directly as HTML on the page, and the code within the HTML file is not minified at all, making it easier to simply crack open in a text editor and modify however you wish!
+<main><section id="1707517025349" style="display: block;"><h1>About SkeleWiki</h1>
+<pre>SkeleWiki is a super hackable, self-replicating web app that lets you create inter-linking pages formatted with Markdown. All data created with SkeleWiki is simply stored directly as HTML on the page, and the code within the HTML file is not minified at all, making it easier to simply crack open in a text editor and modify however you wish!
 
 It's page management with Markdown formatting and a simple search bar all rolled up into a single HTML file that's _less than 32 kilobytes!_
 
@@ -261,13 +229,13 @@ Just download the HTML file and open it in a browser to get started. It's pretty
 
 - Use the "Settings" button to change the wiki's name, description, and CSS, then push "Save" to make your changes.
 - Create a new page by using the "New Page" button. This will create an empty page that you can start editing right away.
-  - Set a page title in the "Name" field and write some text for the page with Markdown formatting.
-    - In addition to Markdown, you can link between pages using wiki link format by putting the (case insensitive) page name in 2 square braces \[\[like this\]\]! If you want the link to have different text than the page's name, then put the page name first then the text to display after a vertical bar \[\[other page|like this\]\]!
-  - If you have multiple pages, you can change the order they display in the navigation by changing the Sort Position.
-  - The page in the `0` position will be the "home" page of your SkeleWiki that is displayed when the file loads or when the Wiki Title is clicked.
-  - Use "Save" to save the page and view the page.
-  - Use "Cancel" to prevent any changes from being saved (results in an empty page if it's newly created).
-  - Use "Delete" to remove the page and navigation entry.
+	- Set a page title in the "Name" field and write some text for the page with Markdown formatting.
+		- In addition to Markdown, you can link between pages using wiki link format by putting the (case insensitive) page name in 2 square braces \[\[like this\]\]! If you want the link to have different text than the page's name, then put the page name first then the text to display after a vertical bar \[\[other page|like this\]\]!
+	- If you have multiple pages, you can change the order they display in the navigation by changing the Sort Position.
+	- The page in the `0` position will be the "home" page of your SkeleWiki that is displayed when the file loads or when the Wiki Title is clicked.
+	- Use "Save" to save the page and view the page.
+	- Use "Cancel" to prevent any changes from being saved (results in an empty page if it's newly created).
+	- Use "Delete" to remove the page and navigation entry.
 - Search for text in your pages using the Search bar. Check the Particularities below for exactly how the results are found &amp; sorted.
 - Click the "Edit" button at the bottom of a page to change that page. The date at the bottom of the page will be updated when you save your changes.
 - Save your changes to a new HTML file by using the "Save" button (or &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;S&lt;/kbd&gt;). The HTML file defaults to a lowercase version of your wiki's name with any non-alphanumeric characters converted to underscores `like_this.html`.
@@ -288,7 +256,13 @@ And that's pretty much it!
 - Search prioritizes exact matches over case-insensitive ones and will display matching pages in order by where the match is found, prioritizing page names over page text, and only the text content of the parsed Markdown is searched when looking for results within the page text.
 - Very large amounts of content on a page and very large numbers of pages may affect the performance of your SkeleWiki because it just uses and manipulates the raw DOM.
 - Only the Markdown of each page is saved and can be found directly in the HTML file within a `pre` tag in the page's `section` tag. It's parsed into formatted HTML that displays when the page is loaded and the JavaScript runs.
-- All pages are on the same level and display in the wiki nav bar.</pre><article hidden="true"></article><footer><time title="Created 2/9/2024, 3:17:05 PM">2/9/2024, 3:20:57 PM</time> <button class="dull editButton" onclick="app.edit(1707517025349)">Edit</button></footer></section><section id="1707517176500" style=""><header><h1>Markdown Support</h1></header><pre>Click the "Edit" button at the bottom of the page to see the markdown source!
+- All pages are on the same level and display in the wiki nav bar.</pre>
+<article hidden="true"></article>
+<footer>
+		<time title="Created 2/9/2024, 3:17:05 PM">2/9/2024, 3:20:57 PM</time> <button class="dull editButton" onclick="edit(1707517025349)">Edit</button>
+</footer></section>
+<section id="1707517176500" style=""><h1>Markdown Support</h1>
+<pre>Click the "Edit" button at the bottom of the page to see the markdown source!
 
 ---
 
@@ -360,12 +334,12 @@ or
 - One last item
 
 - List
-  - Indentation
-    - also
-  - works!
+	- Indentation
+		- also
+	- works!
 - (with
-  - two
-  - spaces)
+	- two
+	- spaces)
 
 1. Item one
 2. Item two
@@ -378,8 +352,8 @@ or
 1. Item one
 2. Item two
 3. Item three
-  * mixing
-  * Sub-list types
+	* mixing
+	* Sub-list types
 4. Item four
 
 Boxes below without the 'x' are unchecked HTML checkboxes.
@@ -392,12 +366,12 @@ This checkbox below will be a checked HTML checkbox.
 
 ```
 This is code
-        So is this
+				So is this
 ```
 
 ```javascript
 function canLabelCode() {
-    return true;
+		return true;
 }
 ```
 
@@ -424,7 +398,7 @@ John didn't even know what the `go_to()` function did!
 - [Heading](#heading)
 - [Another heading](#another-heading)
 - [Chapter](#chapter)
-  - [Subchapter &lt;h3 /&gt;](#subchapter-h3-)
+	- [Subchapter &lt;h3 /&gt;](#subchapter-h3-)
 
 ![This is the alt-attribute for my image](http://imgur.com/myimage.jpg "An optional title")
 
@@ -437,7 +411,13 @@ I want to type *this text surrounded by asterisks* but I don't want it to be
 in italics, so I do this: \*this text surrounded by asterisks\*.
 
 Your computer crashed? Try sending a
-&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt;</pre><article hidden="true"></article><footer><time title="Created 2/9/2024, 3:19:36 PM">2/9/2024, 3:20:16 PM</time> <button class="dull editButton" onclick="app.edit(1707517176500)">Edit</button></footer></section><section id="1707517259013" style=""><header><h1>Hacking SkeleWiki</h1></header><pre>Since it's literally just an HTML file with all its code visibly formatted in the way the developer writes it, you can just change the content or behavior! All you need is a text editor and a basic understanding of web development (HTML, CSS, and JavaScript).
+&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt;</pre>
+<article hidden="true"></article>
+<footer>
+	<time title="Created 2/9/2024, 3:19:36 PM">2/9/2024, 3:20:16 PM</time> <button class="dull editButton" onclick="edit(1707517176500)">Edit</button>
+</footer></section>
+<section id="1707517259013" style=""><h1>Hacking SkeleWiki</h1>
+<pre>Since it's literally just an HTML file with all its code visibly formatted in the way the developer writes it, you can just change the content or behavior! All you need is a text editor and a basic understanding of web development (HTML, CSS, and JavaScript).
 
 The only HTML altered by the app is:
 
@@ -451,418 +431,420 @@ Pretty much anywhere else is untouched by the JavaScript and can be modified. If
 ### Ideas
 
 - Don't want your updated time visible on a page? Find the `main&gt;section&gt;footer&gt;time` entry in the Wiki CSS and add `display: none;` to hide it.
-  - Don't want it in the HTML at all? Then you'll need to update the code to stop the `&lt;time&gt;` elements from being created and then remove them from your HTML. It's set in the `app.add()` method and modified in the `app.edit()` method.
+	- Don't want it in the HTML at all? Then you'll need to update the code to stop the `&lt;time&gt;` elements from being created and then remove them from your HTML. It's set in the `add()` method and modified in the `edit()` method.
 - Need SkeleWiki in your own language? Just modify the UI text in the HTML file!
 - Want to restructure the whole app? You can change the CSS and HTML completely if you need to! Just check the code for any expected structure patterns first so you don't break anything.
-- Don't like the Markdown parser? Replace it! As long as whatever parser you use has its parse function set to `window.md()`, SkeleWiki should handle it fine!</pre><article hidden="true"></article><footer><time title="Created 2/9/2024, 3:20:59 PM">2/9/2024, 3:21:19 PM</time> <button class="dull editButton" onclick="app.edit(1707517259013)">Edit</button></footer></section></main>
-<script defer="">(() => {
-		const w = window;
-		w.q = (s, e) => (e ?? document).querySelector(s);
-		w.qa = (s, e) => (e ?? document).querySelectorAll(s);
-		w.gebi = i => document.getElementById(i);
-		w.ce = t => document.createElement(t);
-		w.main = q('main');
-		w.nav = q('nav ul');
-		w.h = (hash) => (!hash ? true : location.hash = hash) && (!location.hash ? null : decodeURIComponent(location.hash.substring(1)));
-
-		w.app = {
-			current: null,
-			pages: () => Array.from(qa('main > section')),
-			info: (el) => ({
-				id: el.id,
-				name: q('h1', el).textContent,
-				src: q('pre', el)?.textContent ?? '',
-			}),
-			show: (el, y = true) => el.style.display = y ? 'block' : '',
-			settingFields: () => Array.from(qa('#settings :is(input, textarea, select)[name]')).map(el => el.name),
-			handleTab: () => {
-				qa('textarea:not(.notab)').forEach(t => t.onkeydown = function (e) {
-					if (e.key === 'Tab') {
-						const s = this;
-						const tab = '\t';
-						if (t !== s) s.focus();
-						const safeInsert = document.execCommand('insertText', false, tab);
-						if (!safeInsert) {
-							s.setRangeText(tab, s.selectionStart || 0, s.selectionEnd || 0, 'end');
-							s.dispatchEvent(new InputEvent('input', { tab, inputType: 'insertText' }));
-						}
-						e.preventDefault();
-					}
-				});
-			},
-			navItem(el) {
-				const { id, name } = app.info(el);
-				const li = ce('li');
-				li.innerHTML = /*html*/`<a href="javascript:app.go('${id}')" id="nav${id}">${name}</a>`;
-				return li;
-			},
-			go(page, back = false) {
-				if (app.current) app.edit(app.current, false);
-				const pp = app.pages();
-				pp.forEach(el => app.show(el, false));
-				const pg = gebi(page) ?? pp.find(el => app.info(el).name === page) ?? pp[0];
-				if (pg) {
-					const { name } = app.info(pg);
-					document.title = name;
-					if (!back) h(name);
-					app.show(pg);
-					app.current = pg.id;
-				} else {
-					if (!back) location.hash = '';
-					else location.replace(location.pathname);
-				}
-			},
-			settings(close = false) {
-				const s = q('#settings');
-				if (close) {
-					s.close();
-					return;
-				}
-				const form = q('form', s);
-				app.settingFields().forEach(k => {
-					form[k].value = q('#' + k)?.innerHTML?.trim() ?? '';
-				});
-				app.handleTab();
-				s.show();
-			},
-			update(form) {
-				app.settingFields().forEach(k => {
-					q('#' + k).innerHTML = form[k].value;
-				});
-			},
-			edit(id, y = true) {
-				const pg = gebi(id);
-				if (pg) {
-					const { name, src } = app.info(pg);
-					const eId = `edit${id}`;
-					if (!y) {
-						const form = q(`#${eId}`);
-						app.render(!form ? null : id); // If the page was re-sorted, re-render everything so nav updates as well
-						app.show(pg);
-						if (form) form.parentElement.removeChild(form);
-						return;
-					}
-					app.go(id);
-					app.show(pg, false);
-					const pages = app.pages();
-					const sort = pages.findIndex(p => p.id == id);
-					const form = ce('form');
-					form.id = eId;
-					form.innerHTML = /*html*/`<h1>Edit</h1>
+- Don't like the Markdown parser? Replace it! As long as whatever parser you use has its parse function set to `window.md()`, SkeleWiki should handle it fine!</pre>
+<article hidden="true"></article>
+<footer>
+	<time title="Created 2/9/2024, 3:20:59 PM">2/9/2024, 3:21:19 PM</time> <button class="dull editButton" onclick="edit(1707517259013)">Edit</button>
+</footer></section></main>
+<script defer>
+// Aliases for space savings
+const w = window;
+w.q = (s, el) => (el ?? document).querySelector(s);
+w.qa = (s, el) => (el ?? document).querySelectorAll(s);
+w.gebi = i => document.getElementById(i);
+w.ce = t => document.createElement(t);
+w.main = q('main');
+w.nav = q('nav ul');
+// Get and/or set the URL hash
+w.h = hash => (!hash ? true : location.hash = hash) && (!location.hash ? null : decodeURIComponent(location.hash.substring(1)));
+// The current page id
+w.current = null;
+// Get current page Elements as array
+w.pages = () => Array.from(qa('main > section'));
+// Get page details as object from Element
+w.info = el => ({
+	id: el.id,
+	name: q('h1', el).textContent,
+	src: q('pre', el)?.textContent ?? '',
+});
+// Get the names of all settings form inputs
+w.settingFields = () => Array.from(qa('#settings :is(input, textarea, select)[name]')).map(el => el.name);
+// Return a nav li element for the given page Element
+w.navItem = el => {
+	const { id, name } = info(el);
+	const li = ce('li');
+	li.innerHTML = /*html*/`<a href="javascript:go('${id}')" id="nav${id}">${name}</a>`;
+	return li;
+};
+// Show (default) or hide the given page Element
+w.show = (el, y = true) => el.style.display = (y ? 'block' : '');
+// Enable typing tab characters in all textarea Elements without class `notab`
+w.handleTab = () => {
+	qa('textarea:not(.notab)').forEach(t => t.onkeydown = function (e) {
+		if (e.key === 'Tab' && !e.shiftKey) {
+			const s = this;
+			const tab = '\t';
+			if (t !== s) s.focus();
+			const safeInsert = document.execCommand('insertText', false, tab);
+			if (!safeInsert) {
+				s.setRangeText(tab, s.selectionStart || 0, s.selectionEnd || 0, 'end');
+				s.dispatchEvent(new InputEvent('input', { tab, inputType: 'insertText' }));
+			}
+			e.preventDefault();
+		}
+	});
+};
+// Parse [[wiki links]]
+w.wikiLinks = src => src.replace(/\[\[([^\]\|]+)(\|[^\]]+)?\]\]/g, (m, name, text) => `<a href="javascript:go('${name}')">${text ? text.substring(1) : name}</a>`);
+// Show page Element with given name or id, or home page if none is given. If back == true, don't update url hash
+w.go = (page, back = false) => {
+	if (current) edit(current, false);
+	const pp = pages();
+	pp.forEach(el => show(el, false));
+	const pg = gebi(page) ?? pp.find(el => info(el).name === page) ?? pp[0];
+	if (pg) {
+		const { name } = info(pg);
+		document.title = name;
+		if (!back) h(name);
+		show(pg);
+		current = pg.id;
+	} else {
+		if (!back) location.hash = '';
+		else location.replace(location.pathname);
+	}
+};
+// Show (default) or hide settings dialog
+w.settings = close => {
+	const s = q('#settings');
+	if (close === true) return s.close();
+	const form = q('form', s);
+	settingFields().forEach(n => form[n].value = q('#' + n)?.innerHTML?.trim() ?? '');
+	handleTab();
+	s.show();
+};
+// Save the settings dialog & update innerHTML of all elements with ids matching the input name
+w.update = form => settingFields().forEach(n => q('#' + n).innerHTML = form[n].value);
+// Show (default) or hide a form to edit the page with given id. Also updates nav entry.
+w.edit = (id, y = true) => {
+	const pg = gebi(id);
+	if (pg) {
+		const { name, src } = info(pg);
+		const eId = `edit${id}`;
+		if (!y) {
+			const f = q(`#${eId}`);
+			render(!f ? null : id); // If the page was re-sorted, re-render everything so nav updates as well
+			show(pg);
+			if (f) f.parentElement.removeChild(f);
+			return;
+		}
+		go(id);
+		show(pg, false);
+		const pp = pages();
+		const pos = pp.findIndex(p => p.id == id);
+		const f = ce('form');
+		f.id = eId;
+		f.innerHTML = /*html*/`<h1>Edit</h1>
 <label>Name <input name="name" value="${name}"></label>
 <label>Markdown Content<br><textarea name="text">${src}</textarea></label>
-<label>Sort Position <select name="sort">${pages.map((p, i) => `<option${i === sort ? ' selected' : ''}>${i}</option>`).join('')}</select></label>
-<footer><button type="submit">Save</button> <button type="button" class="dull" onclick="app.edit(${id}, false)">Cancel</button> <button type="button" class="bad" onclick="app.delete(${id})">Delete</button></footer>`;
-					form.onsubmit = e => {
-						e.preventDefault();
-						q('h1', pg).textContent = form.name.value.trim();
-						q('pre', pg).textContent = form.text.value;
-						q('footer>time', pg).textContent = new Date().toLocaleString();
-						const newSort = parseInt(form.sort.value);
-						if (newSort !== sort) {
-							const el = pages.splice(sort, 1);
-							pages.splice(newSort, 0, el[0]);
-							main.innerHTML = '';
-							pages.forEach(p => main.appendChild(p));
-						}
-						app.edit(id, false);
-					};
-					pg.parentElement.insertBefore(form, pg);
-					app.handleTab();
-					form.name.focus();
+<label>Sort Position <select name="pos">${pp.map((p, i) => `<option${i === pos ? ' selected' : ''}>${i}</option>`).join('')}</select></label>
+<footer><button type="submit">Save</button> <button type="button" class="dull" onclick="edit(${id}, false)">Cancel</button> <button type="button" class="bad" onclick="del(${id})">Delete</button></footer>`;
+		f.onsubmit = e => {
+			e.preventDefault();
+			q('h1', pg).textContent = f.name.value.trim();
+			q('pre', pg).textContent = f.text.value;
+			q('footer>time', pg).textContent = new Date().toLocaleString();
+			const newPos = parseInt(f.pos.value);
+			if (newPos !== pos) {
+				pp.splice(newPos, 0, pp.splice(pos, 1)[0]);
+				main.innerHTML = '';
+				pp.forEach(p => main.appendChild(p));
+			}
+			edit(id, false);
+		};
+		pg.parentElement.insertBefore(f, pg);
+		handleTab();
+		f.name.focus();
+	}
+};
+// Create a new page Element & start editing
+w.add = () => {
+	const p = ce('section');
+	p.id = Date.now();
+	const t = new Date().toLocaleString();
+	p.innerHTML = /*html*/`<h1></h1>
+<pre hidden></pre>
+<article></article>
+<footer>
+	<time title="Created ${t}">${t}</time> <button class="dull editBtn" onclick="edit(${p.id})">Edit</button>
+</footer>`;
+	main.appendChild(p);
+	nav.appendChild(navItem(p));
+	edit(p.id);
+};
+// Delete the page with the given id
+w.del = id => {
+	if (confirm('Delete page?')) {
+		const p = gebi(id);
+		if (p) p.parentElement.removeChild(p);
+		const na = gebi(`nav${id}`);
+		if (na) na.closest('ul').removeChild(na.parentElement);
+		const e = gebi(`edit${id}`);
+		if (e) e.parentElement.removeChild(e);
+		go();
+	}
+};
+// Check all pages for text matching the given term
+w.search = term => {
+	const r = q('#search #results');
+	clearTimeout(r.debounce);
+	r.debounce = setTimeout(() => {
+		r.innerHTML = '';
+		if (!term) return;
+		const lcTerm = term.toLowerCase();
+		pages().map(p => {
+			const i = info(p);
+			const tmp = ce('div');
+			tmp.innerHTML = md(wikiLinks(i.src));
+			i.txt = `${i.name} ${tmp.textContent}`;
+			return i;
+		})
+			// Get only pages that contain the search term anywhere in any form
+			.filter(({txt}) => txt.match(new RegExp(term, 'i')) !== null)
+			// Compare index of literal text plus case-insensitive text
+			.sort((a, b) => {
+				const ai = a.txt.indexOf(term);
+				let aici = a.txt.toLowerCase().indexOf(lcTerm);
+				if (aici < 0) aici = Infinity;
+				const bi = b.txt.indexOf(term);
+				let bici = b.txt.toLowerCase().indexOf(lcTerm);
+				if (bici < 0) bici = Infinity;
+				if (ai >= 0 && bi < 0) return -1;
+				if (ai < 0 && bi >= 0) return -1;
+				if (ai < 0 && bi < 0) {
+					if (aici === bici) return 0;
+					return aici < bici ? -1 : 1;
 				}
-			},
-			add() {
-				p = document.createElement('section');
-				p.id = Date.now();
-				const time = new Date().toLocaleString();
-				p.innerHTML = /*html*/`<header><h1></h1></header><pre hidden></pre><article></article><footer><time title="Created ${time}">${time}</time> <button class="dull editButton" onclick="app.edit(${p.id})">Edit</edit></footer>`;
-				main.appendChild(p);
-				nav.appendChild(app.navItem(p));
-				app.edit(p.id);
-			},
-			delete(id) {
-				if (confirm('Delete page?')) {
-					const p = gebi(id);
-					if (p) p.parentElement.removeChild(p);
-					const na = gebi(`nav${id}`);
-					if (na) na.closest('ul').removeChild(na.parentElement);
-					const e = gebi(`edit${id}`);
-					if (e) e.parentElement.removeChild(e);
-					app.go();
-				}
-			},
-			search(term) {
-				const resultsEl = q('#searchResults');
-				clearTimeout(resultsEl.debounce);
-				resultsEl.debounce = setTimeout(() => {
-					resultsEl.innerHTML = '';
-					if (!term) return;
-					const lcTerm = term.toLowerCase();
-					const matches = app.pages().map(p => {
-						const i = app.info(p);
-						const temp = ce('div');
-						temp.innerHTML = md(i.src);
-						i.text = temp.textContent;
-						return i;
-					})
-						// Get only pages that contain the search term anywhere in any form
-						.filter(({ name, text }) => `${name} ${text}`.match(new RegExp(term, 'i')) !== null)
-						.sort((a, b) => {
-							const aText = `${a.name} ${a.text}`;
-							const bText = `${b.name} ${b.text}`;
-							const aIndex = aText.indexOf(term);
-							let aIndexCI = aText.toLowerCase().indexOf(lcTerm);
-							if (aIndexCI < 0) aIndexCI = Infinity;
-							const bIndex = bText.indexOf(term);
-							let bIndexCI = bText.toLowerCase().indexOf(lcTerm);
-							if (bIndexCI < 0) bIndexCI = Infinity;
-							if (aIndex >= 0 && bIndex < 0) return -1;
-							if (aIndex < 0 && bIndex >= 0) return -1;
-							if (aIndex < 0 && bIndex < 0) {
-								if (aIndexCI === bIndexCI) return 0;
-								return aIndexCI < bIndexCI ? -1 : 1;
-							}
-							if (aIndex === bIndex) return 0;
-							return aIndex < bIndex ? -1 : 1;
-						}).forEach((p) => {
-							const mark = t => t.replace(new RegExp(`(${term})`, 'i'), '<mark>$1</mark>');
-							const name = mark(p.name);
-							const i = p.text.toLowerCase().indexOf(lcTerm);
-							const preview = p.text.length < 1 ? '' : p.text.substring(Math.max(0, i - 10), Math.min(100, p.text.length, i + term.length + 10));
-							resultsEl.innerHTML += /*html*/`<a href="javascript:app.go(${p.id})">${name}<p class="sm">${mark(preview)}</p></a>`;
-						});
-				}, 300);
-			},
-			render(pgId = null) {
-				if (!pgId) nav.innerHTML = '';
-				const pages = app.pages();
-				(!pgId ? pages : [gebi(pgId)]).forEach(p => {
-					const { id, name, src } = app.info(p);
-					q('pre', p).setAttribute('hidden', '');
-					const a = q('article', p);
-					const content = src.replace(/\[\[([^\]\|]+)(\|[^\]]+)?\]\]/g, (m, name, text) => {
-						return `<a href="javascript:app.go('${name}')">${text ? text.substring(1) : name}</a>`;
-					});
-					a.innerHTML = md(content);
-					a.removeAttribute('hidden');
-					if (!pgId) {
-						nav.appendChild(app.navItem(p));
-					} else {
-						gebi(`nav${id}`).textContent = name;
-					}
-				});
-			},
-			save() {
-				const name = q('#wiki #name');
-				app.go();
-				const pp = app.pages();
-				pp.forEach(p => {
-					const txt = q('pre', p).removeAttribute('hidden');
-					const a = q('article', p);
-					a.setAttribute('hidden', true);
-					a.innerHTML = '';
-					const edit = gebi(`edit${p.id}`);
-					if (edit) edit.parentElement.removeChild(edit);
-				});
-				document.title = name;
-				const html = /*html*/`<!DOCTYPE html><html lang="en">
+				if (ai === bi) return 0;
+				return ai < bi ? -1 : 1;
+			})
+			// Repopulate search responses el with term highlighted
+			.forEach((p) => {
+				const mark = t => t.replace(new RegExp(`(${term.replace(/[\W\D]/g, '\\$&')})`, 'i'), '<mark>$1</mark>');
+				const txt = p.txt.replace(p.name, '');
+				const i = txt.toLowerCase().indexOf(lcTerm);
+				const preview = txt.length < 1 ? '' : txt.substring(Math.max(0, i - 10), Math.min(100, txt.length, i + term.length + 10));
+				r.innerHTML += /*html*/`<a href="javascript:go(${p.id})" onclick="q('#search #results').innerHTML = ''">${mark(p.name)}<p class="sm">${mark(preview)}</p></a>`;
+			});
+	}, 300);
+};
+// If page id given, re-render stored Markdown directly into the element & update nav text
+w.render = (pId = null) => {
+	if (!pId) nav.innerHTML = '';
+	(!pId ? pages() : [gebi(pId)]).forEach(p => {
+		const { id, name, src } = info(p);
+		q('pre', p).setAttribute('hidden', '');
+		const a = q('article', p);
+		a.innerHTML = md(wikiLinks(src));
+		a.removeAttribute('hidden');
+		if (!pId) {
+			nav.appendChild(navItem(p));
+		} else {
+			gebi(`nav${id}`).textContent = name;
+		}
+	});
+};
+// Reset to default state, remove rendered Markdown, start download of HTML file, and reset to current view.
+w.save = () => {
+	go(); // go to home page
+	const pp = pages();
+	const s = q('#search');
+	q('input', s).value = '';
+	q('#results', s).innerHTML = '';
+	pp.forEach(p => {
+		const txt = q('pre', p).removeAttribute('hidden');
+		const a = q('article', p);
+		a.setAttribute('hidden', true);
+		a.innerHTML = '';
+		const edit = gebi(`edit${p.id}`);
+		if (edit) edit.parentElement.removeChild(edit);
+	});
+	const name = q('#wiki #name').textContent;
+	document.title = name;
+	const html = /*html*/`<!DOCTYPE html><html lang="en">
 <head>${document.head.innerHTML}</head>
 <body>${document.body.innerHTML}</body></html>`;
-				app.render();
-				history.back();
+	render();
+	history.back();
 
-				const el = document.createElement('a');
-				el.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(html));
-				const filename = name.textContent.toLowerCase().replace(/\W/g, '_') + '.html';
-				el.setAttribute('download', filename);
-				document.body.appendChild(el);
-				el.click();
-				document.body.removeChild(el);
-			},
-		};
+	const a = ce('a');
+	a.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(html));
+	const filename = name.toLowerCase().replace(/\W/g, '_') + '.html';
+	a.setAttribute('download', filename);
+	document.body.appendChild(a);
+	a.click();
+	document.body.removeChild(a);
+};
 
-		w.addEventListener('keydown', e => {
-			if (e.ctrlKey && e.key === 's') {
-				e.preventDefault();
-				app.save();
-			}
-		});
-		w.addEventListener('popstate', e => {
-			app.go(h(), true);
-		});
-
-		app.render();
-		app.go(h());
-	})();
-
-	/**
-	 * Modified beyond recognition from md.js, a lightweight markdown parser
-	 * https://github.com/thysultan/md.js
-	 * 
-	 * @licence MIT
-	 */
-	/**
-	 * Supports Markdown Features:
-	 * - HTML
-	 * - headings h1–h6+ (# h1, ## h2, ### h3, etc.)
-	 * - paragraphs (\n\n)
-	 * - line breaks (	\n)
-	 * - blockquotes (> text)
-	 * - horizontal rule (---, ***, - - -, * * *)
-	 * - code blocks (```)
-	 * - inline code (`code`)
-	 * - images with alt text & optional title (![alt](image_src "optional title"))
-	 * - inline Markdown links with optional title ([link text](link_url "optional title"))
-	 * - auto links & email linking (<http://url.domain>, <person@email.example>)
-	 * - lists with indentation (- list item, * list item, + list item)
-	 * - checkboxes ([ ], [x])
-	 * - bold, italic (**bold**, __bold__, *italic*, _italic_, ***bold & italic***, ___bold & italic___, **_bold & italic_**, etc.)
-	 * - strikethrough (~~strikethrough~~)
-	 * - escaped characters (\*, \_)
-	 */
-	/**
-	 * markdown parser
-	 * 
-	 * @param	{string} markdown
-	 * @return {string}
-	 */
-	function md(markdown) {
-		if (!markdown) {
-			return '';
-		}
-
-		const charMap = {
-			'<': '&lt;',
-			'>': '&gt;',
-			'"': '&quot;',
-			"'": '&#39;',
-			'&': '&amp;',
-			'[': '&#91;',
-			']': '&#93;',
-			'(': '&#40;',
-			')': '&#41;',
-			'_': '&#95;',
-			'*': '&ast;',
-			'`': '&#96;',
-		};
-		// Save non-& charMap values without `&` to more easily check for double-escaped htmlEntity values
-		const doubleEscaped = Object.keys(charMap).filter(c => c != '&').map(c => charMap[c].replace(c != '&' ? '&' : '', ''));
-
-		const htmlEntity = str => {
-			return str.replace(/[<>&\(\)\[\]"']/g, c => (charMap[c] || c))
-				.replace(new RegExp(`&amp;(${doubleEscaped.join('|')})`, 'g'), '&$1');
-		}
-
-		var code = [];
-		var cIdx = 0; // Code index
-		var html = [];
-		var hIdx = 0; // HTML index
-		var length = markdown.length;
-
-		// to allow matching trailing paragraphs
-		if (markdown[length - 1] !== '\n' && markdown[length - 2] !== '\n') {
-			markdown += '\n\n';
-		}
-
-		// format, removes tabs, leading and trailing spaces
-		markdown = (
-			markdown
-				// escaped characters
-				.replace(/\\(.)/g, (m, c) => (charMap[c] || m))
-				// collect code blocks and replace with placeholder
-				// we do this to avoid code blocks matching the paragraph regexp
-				.replace(/```(.*)\n([^\0]+?)```(?!```)/gm, (m, lang, block) => {
-					code[cIdx] = { lang, block: htmlEntity(block) };
-					return `{code-${cIdx++}}`;
-				})
-				// inline code
-				.replace(/`([^`]+?)`/g, (m, code) => `<code>${htmlEntity(code)}</code>`)
-				// auto links
-				.replace(/<([^>\s]+(\/\/|@)[^>\s]+)>/g, (m, url, method) => `[${url}](${method === '@' ? 'mailto:' : ''}${url})`)
-				// links
-				.replace(/(!?)\[([^\]]*?)\]\(([^\s\n]*)(?:| "(.*)")\)/gm, (m, img, text, url, title) => {
-					text = htmlEntity(text);
-					// try to decode url before re-encoding it in case it has encoded values to prevent encoding the % character
-					try { url = decodeURI(url); } catch { } // using try/catch because a malformed URI throws an error
-					url = encodeURI(url);
-					title = title ? ` title="${htmlEntity(title)}"` : '';
-					if (img) return `<img src="${url}" alt="${text}"${title}>`;
-					return `<a href="${url}"${title}>${text}</a>`;
-				})
-				// HTML tags
-				.replace(/(<\/?[a-zA-Z]+[^>]*>)/gm, (m, tag) => {
-					html[hIdx] = tag;
-					return `{html-${hIdx++}}`;
-				})
-				// blockquotes
-				.replace(/^[ \t]*>+ (.*)/gm, '<blockquote>\n$1\n</blockquote>')
-				.replace(/(<\/blockquote>\n?<blockquote>)+?/g, '')
-				// headings
-				.replace(/^(#+) +(.*)/gm, (m, hash, content) => `<h${hash.length}>${content}</h${hash.length}>`)
-				// headings h1 (commonmark)
-				.replace(/^([^\n\t ])(.*)\n====+/gm, '<h1>$1$2</h1>')
-				// headings h2 (commonmark)
-				.replace(/^([^\n\t ])(.*)\n----+/gm, '<h2>$1$2</h2>')
-				// horizontal rule 
-				.replace(/\n( *[-*]){3,}\n/gm, '<hr>')
-				// checkboxes
-				.replace(/\[( |x)\]/g, (m, checked) => `<input type="checkbox" disabled${checked.toLowerCase() === 'x' ? ' checked' : ''}>`)
-				// line breaks
-				.replace(/	+\n/gm, '<br>')
-				// paragraphs - exclude lists, already-rendered HTML, & whitespace
-				.replace(/^([^-\+\*\d<\t \n])([^]*?)(?:\n\n)/gm, (m, leadingCharacter, body) => `<p>${leadingCharacter}${body}</p>\n`)
-				// lists
-				.replace(/^([\t ]*)(?:(-|\+|\*)|(\d+(?:\)|\.))) (.*)/gm, (m, leading, b, numbered, content) => {
-					leading = leading.replace(/	/g, '\t');
-					const type = numbered ? 'o' : 'u';
-					return `${leading}<${type}l><li>${content}</li></${type}l>`;
-				})
-		);
-
-		// This handles *almost* all combinations, but some indented lists combining ul & ol don't render right
-		var indentListRegExp = /<\/li><\/(u|o)l>\n(\t+)<(u|o)l><li>(.*)<\/li><\/(u|o)l>/;
-		while (markdown.match(indentListRegExp)) {
-			markdown = markdown.replace(indentListRegExp, function (m, parentEnd, tabs, childStart, content, childEnd) {
-				if (tabs.length > 0) {
-					tabs = tabs.substring(1);
-					if (tabs.length > 0) tabs = '\n' + tabs;
-				}
-				return `${tabs}<${childStart}l><li>${content}</li></${childEnd}l></li></${parentEnd}l>`;
-			});
-		}
-
-		markdown = (
-			markdown
-				// Combine lists
-				.replace(/(<\/ul>\n?[ \t]*<ul>)+?/g, '')
-				.replace(/(<\/ol>\n?[ \t]*<ol>)+?/g, '')
-				// strong
-				.replace(/\*\*([^\n*]+?)\*\*/g, '<strong>$1</strong>')
-				.replace(/__([^\n_]+?)__/g, '<strong>$1</strong>')
-				// emphasis
-				.replace(/\*([^\n*]+?)\*/g, '<em>$1</em>')
-				.replace(/_([^\n_]+?)_/g, '<em>$1</em>')
-				// strike through
-				.replace(/(?:~~)([^~]+?)(?:~~)/g, '<del>$1</del>')
-		);
-
-		// replace html tag placeholders
-		for (let i = 0; i < hIdx; i++) {
-			markdown = markdown.replace(`{html-${i}}`, html[i]);
-		}
-
-		// replace code block placeholders
-		for (let i = 0; i < cIdx; i++) {
-			const { lang, block } = code[i];
-			markdown = markdown.replace(
-				`{code-${i}}`,
-				`<pre><code${lang ? ` class="language-${lang}"` : ''}>${htmlEntity(block)}</code></pre>`
-			);
-		}
-
-		return markdown.trim();
+// Use save function if Ctrl+S is used
+w.addEventListener('keydown', e => {
+	if (e.ctrlKey && e.key === 's') {
+		e.preventDefault();
+		save();
 	}
-</script>
+});
+// Ensure correct page displays when Back button is pressed.
+w.addEventListener('popstate', e => {
+	go(h(), true);
+});
+// Initialize the view
+(() => {
+	render();
+	go(h());
+})();
 
-</body></html>
+/**
+ * Markdown parser modified beyond recognition from md.js <https://github.com/thysultan/md.js>
+ * @licence MIT
+ * Supported Features:
+ * - HTML
+ * - headings h1–h6+ (# h1, ## h2, ### h3, etc.)
+ * - paragraphs (\n\n)
+ * - line breaks (	\n)
+ * - blockquotes (> text)
+ * - horizontal rule (---, ***, - - -, * * *)
+ * - code blocks (```)
+ * - inline code (`code`)
+ * - images with alt text & optional title (![alt](image_src "optional title"))
+ * - inline Markdown links with optional title ([link text](link_url "optional title"))
+ * - auto links & email linking (<http://url.domain>, <person@email.example>)
+ * - lists with indentation (- list item, * list item, + list item)
+ * - checkboxes ([ ], [x])
+ * - bold, italic (**bold**, __bold__, *italic*, _italic_, ***bold & italic***, ___bold & italic___, **_bold & italic_**, etc.)
+ * - strikethrough (~~strikethrough~~)
+ * - escaped characters (\*, \_)
+ * 
+ * @param	{string} src
+ * @return {string}
+ */
+function md(src) {
+	if (!src) return '';
+
+	const chr = {
+		'<': '&lt;',
+		'>': '&gt;',
+		'"': '&quot;',
+		"'": '&#39;',
+		'&': '&amp;',
+		'[': '&#91;',
+		']': '&#93;',
+		'(': '&#40;',
+		')': '&#41;',
+		'_': '&#95;',
+		'*': '&ast;',
+		'`': '&#96;',
+	};
+	// Save non-& char map values without `&` to more easily check for double-escaped htmlEntity values
+	const esc2 = Object.keys(chr).filter(c => c != '&').map(c => chr[c].replace(c != '&' ? '&' : '', ''));
+
+	// Get the HTML entity for the character from the char map
+	const ent = str => str.replace(/[<>&\(\)\[\]"']/g, c => (chr[c] || c))
+		.replace(new RegExp(`&amp;(${esc2.join('|')})`, 'g'), '&$1');
+
+	var code = []; // Code Blocks
+	var cIdx = 0; // Code index
+	var html = []; // HTML tags
+	var hIdx = 0; // HTML index
+	
+	// to allow matching trailing paragraphs
+	var l = src.length;
+	if (src[l - 1] !== '\n' && src[l - 2] !== '\n') {
+		src += '\n\n';
+	}
+
+	// escaped characters
+	src = src.replace(/\\(.)/g, (m, c) => (chr[c] || m))
+		// collect code blocks and replace with placeholder
+		// we do this to avoid code blocks matching the paragraph regexp
+		.replace(/```(.*)\n([^\0]+?)```(?!```)/gm, (m, lang, block) => {
+			code[cIdx] = { lang, block: ent(block) };
+			return `{code-${cIdx++}}`;
+		})
+		// inline code
+		.replace(/`([^`]+?)`/g, (m, c) => `<code>${ent(c)}</code>`)
+		// auto links
+		.replace(/<([^>\s]+(\/\/|@)[^>\s]+)>/g, (m, url, method) => `[${url}](${method === '@' ? 'mailto:' : ''}${url})`)
+		// links
+		.replace(/(!?)\[([^\]]*?)\]\(([^\s\n]*)(?:| "(.*)")\)/gm, (m, img, txt, url, title) => {
+			txt = ent(txt);
+			// try to decode url before re-encoding it in case it has encoded values to prevent encoding the % character
+			try { url = decodeURI(url); } catch { } // using try/catch because a malformed URI throws an error
+			url = encodeURI(url);
+			title = title ? ` title="${ent(title)}"` : '';
+			if (img) return `<img src="${url}" alt="${txt}"${title}>`;
+			return `<a href="${url}"${title}>${txt}</a>`;
+		})
+		// HTML tags
+		.replace(/(<\/?[a-zA-Z]+[^>]*>)/gm, (m, tag) => {
+			html[hIdx] = tag;
+			return `{html-${hIdx++}}`;
+		})
+		// blockquotes
+		.replace(/^[ \t]*>+ (.*)/gm, '<blockquote>\n$1\n</blockquote>')
+		.replace(/(<\/blockquote>\n?<blockquote>)+?/g, '')
+		// headings
+		.replace(/^(#+) +(.*)/gm, (m, hash, txt) => `<h${hash.length}>${txt}</h${hash.length}>`)
+		// headings h1 (commonmark)
+		.replace(/^([^\n\t ])(.*)\n====+/gm, '<h1>$1$2</h1>')
+		// headings h2 (commonmark)
+		.replace(/^([^\n\t ])(.*)\n----+/gm, '<h2>$1$2</h2>')
+		// horizontal rule 
+		.replace(/\n( *[-*]){3,}\n/gm, '<hr>')
+		// checkboxes
+		.replace(/\[( |x)\]/g, (m, checked) => `<input type="checkbox" disabled${checked.toLowerCase() === 'x' ? ' checked' : ''}>`)
+		// line breaks
+		.replace(/	+\n/gm, '<br>')
+		// paragraphs - exclude lists, already-rendered HTML, & whitespace
+		.replace(/^([^-\+\*\d<\t \n])([^]*?)(?:\n\n)/gm, (m, leadChr, body) => `<p>${leadChr}${body}</p>\n`)
+		// lists
+		.replace(/^([\t ]*)(?:(-|\+|\*)|(\d+(?:\)|\.))) (.*)/gm, (m, lead, b, numbered, txt) => {
+			lead = lead.replace(/	/g, '\t');
+			const type = numbered ? 'o' : 'u';
+			return `${lead}<${type}l><li>${txt}</li></${type}l>`;
+		});
+
+	// This handles *almost* all combinations, but some indented lists combining ul & ol don't render right
+	var indentRE = /<\/li><\/(u|o)l>\n(\t+)<(u|o)l><li>(.*)<\/li><\/(u|o)l>/;
+	while (src.match(indentRE)) {
+		src = src.replace(indentRE, (m, pEnd, tabs, cStart, txt, cEnd) => {
+			if (tabs.length > 0) {
+				tabs = tabs.substring(1);
+				if (tabs.length > 0) tabs = '\n' + tabs;
+			}
+			return `${tabs}<${cStart}l><li>${txt}</li></${cEnd}l></li></${pEnd}l>`;
+		});
+	}
+
+	// Combine lists
+	src = src.replace(/(<\/ul>\n?[ \t]*<ul>)+?/g, '')
+		.replace(/(<\/ol>\n?[ \t]*<ol>)+?/g, '')
+		// strong
+		.replace(/\*\*([^\n*]+?)\*\*/g, '<strong>$1</strong>')
+		.replace(/__([^\n_]+?)__/g, '<strong>$1</strong>')
+		// emphasis
+		.replace(/\*([^\n*]+?)\*/g, '<em>$1</em>')
+		.replace(/_([^\n_]+?)_/g, '<em>$1</em>')
+		// strike through
+		.replace(/(?:~~)([^~]+?)(?:~~)/g, '<del>$1</del>');
+
+	// replace html tag placeholders
+	for (let i = 0; i < hIdx; i++) {
+		src = src.replace(`{html-${i}}`, html[i]);
+	}
+
+	// replace code block placeholders
+	for (let i = 0; i < cIdx; i++) {
+		const { lang, block } = code[i];
+		src = src.replace(
+			`{code-${i}}`,
+			`<pre><code${lang ? ` class="language-${lang}"` : ''}>${ent(block)}</code></pre>`
+		);
+	}
+
+	return src.trim();
+}
+</script>
+</body>
+</html>
