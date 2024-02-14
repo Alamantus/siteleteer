@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="version" content="1.0.0">
 <meta name="application-name" content="SkeleWiki">
 <title>SkeleWiki</title>
@@ -43,6 +43,16 @@ main>section,
 #results:empty {
 	display: none;
 }
+code,
+kbd {
+	font-family: monospace;
+	font-size: .8em;
+}
+code {
+	background: var(--dull);
+	padding: calc(var(--space) / 3) calc(var(--space) / 2);
+}
+pre>code {display: block}
 dialog[open] {
 	display: block;
 	background: var(--bg);
@@ -194,7 +204,7 @@ main>section>footer>time::before {content: 'Updated '}
 	</section>
 	<section id="actions">
 		<div id="search" style="flex:1">
-			<input type="search" placeholder="Search" oninput="search(event.target.value)" onfocus="search(event.target.value)">
+			<input type="search" placeholder="Search">
 			<div id="results"></div>
 		</div>
 		<div style="flex:2;text-align:right">
@@ -203,7 +213,7 @@ main>section>footer>time::before {content: 'Updated '}
 			<button id="saveBtn" onclick="save()">Save</button>
 		</div>
 	</section>
-	<nav><ul><li><a href="javascript:go('1707517025349')" id="nav1707517025349">About SkeleWiki</a></li><li><a href="javascript:go('1707517176500')" id="nav1707517176500">Markdown Support</a></li><li><a href="javascript:go('1707517259013')" id="nav1707517259013">Hacking SkeleWiki</a></li><li><a href="javascript:go('1707872418096')" id="nav1707872418096">Publishing</a></li></ul></nav>
+	<nav><ul></ul></nav>
 </header>
 <dialog id="settings">
 	<h1>Settings</h1>
@@ -237,11 +247,15 @@ Just download the HTML file and open it in a browser to get started. It's pretty
 	- Use "Delete" to remove the page and navigation entry.
 - Search for text in your pages using the Search bar. Check the Particularities below for exactly how the results are found &amp; sorted.
 - Click the "Edit" button at the bottom of a page to change that page. The date at the bottom of the page will be updated when you save your changes.
-- Save your changes to a new HTML file by using the "Save" button (or &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;S&lt;/kbd&gt;). The HTML file defaults to a lowercase version of your wiki's name with any non-alphanumeric characters converted to underscores `like_this.html`.
+- Save your changes to a new HTML file by using the "Save" button (or &lt;kbd&gt;Ctrl&lt;/kbd&gt;/&lt;kbd&gt;Command&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt;). The HTML file defaults to a lowercase version of your wiki's name with any non-alphanumeric characters converted to underscores `like_this.html`.
 
 And that's pretty much it!
 
+If you want to get a good idea of how to use SkeleWiki, you can make changes to and download _this_ site by just clicking the "Save" button in the top right corner! Any changes you make will be saved as a new file on your computer, but they aren't permanent and will reset if you refresh the page.
+
 ### Particularities
+
+Being a tiny platform with as little unnecessary functionality as possible, there are some behaviors that you should keep in mind while using it. Here's everything that might be unexpected in no particular order:
 
 - New pages are always added to the end of the page order, and thus the end of the nav bar.
 - Pages without a name cannot be linked to and display in the navigation as "No content."
@@ -250,6 +264,7 @@ And that's pretty much it!
 	- You can find the page's id by hovering over its nav menu item.
 - If you use a wiki link to a page that doesn't exist, nothing will happen when you click it.
 - When editing a page, pressing &lt;kbd&gt;Tab&lt;/kbd&gt; in the Markdown Content text area (also the Wiki CSS text area in Settings) will type a `Tab` character instead of changing focus to the next form element.
+	- Holding &lt;kbd&gt;Shift&lt;/kbd&gt; while pressing &lt;kbd&gt;Tab&lt;/kbd&gt; _will_ navigate to the previous element as expected.
 - You _can_ use HTML in the wiki name and description, but should you?
 - The Wiki CSS is actually the literal contents of the `&lt;style&gt;` tag in the HTML's head. You can change it however you wish, but it might affect the wiki's page structure if you remove too much stuff.
 - Every page exists in the file's HTML, but all pages except for the current one are hidden by default.
@@ -261,9 +276,8 @@ And that's pretty much it!
 - All pages are on the same level and display in the wiki nav bar.</pre>
 <article hidden="true"></article>
 <footer>
-		<time title="Created 2/9/2024, 3:17:05 PM">2/13/2024, 5:58:56 PM</time> <button class="dull editButton" onclick="edit(1707517025349)">Edit</button>
-</footer></section>
-<section id="1707517176500" style=""><h1>Markdown Support</h1>
+<time title="Created 2/9/2024, 3:17:05 PM">2/13/2024, 11:29:10 PM</time> <button class="dull editButton" onclick="edit(1707517025349)">Edit</button>
+</footer></section><section id="1707517176500" style=""><h1>Markdown Support</h1>
 <pre>Click the "Edit" button at the bottom of the page to see the markdown source!
 
 ---
@@ -416,19 +430,53 @@ Your computer crashed? Try sending a
 &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt;</pre>
 <article hidden="true"></article>
 <footer>
-	<time title="Created 2/9/2024, 3:19:36 PM">2/9/2024, 3:20:16 PM</time> <button class="dull editButton" onclick="edit(1707517176500)">Edit</button>
-</footer></section>
-<section id="1707517259013" style=""><h1>Hacking SkeleWiki</h1>
+<time title="Created 2/9/2024, 3:19:36 PM">2/9/2024, 3:20:16 PM</time> <button class="dull editButton" onclick="edit(1707517176500)">Edit</button>
+</footer></section><section id="1707517259013" style=""><h1>Hacking SkeleWiki</h1>
 <pre>Since it's literally just an HTML file with all its code visibly formatted in the way the developer writes it, you can just change the content or behavior! All you need is a text editor and a basic understanding of web development (HTML, CSS, and JavaScript).
 
 The only HTML altered by the app is:
 
 - The `&lt;a id="name"&gt;` element in the wiki header
 - The `&lt;span id="desc"&gt;` element in the wiki header
+- The `&lt;div id="results"&gt;` element in the wiki header
 - The CSS within the `&lt;style id="css"&gt;` element in the HTML `head`
 - The HTML content within the `&lt;main&gt;` element.
 
-Pretty much anywhere else is untouched by the JavaScript and can be modified. If you need to add meta tags to the head or additional code, you can just do that. In addition, all the app functions can be accessed through `window` in JavaScript under the `app` Object. There are also a couple global helper methods in there to keep the code small.
+Pretty much anywhere else is untouched by the JavaScript and can be modified. If you need to add meta tags to the head or additional code, you can just do that. In addition, all the app functions can be accessed through `window` in JavaScript. There are also a couple helper methods in there to keep the code small.
+
+All the functions that control the app are set directly in the `window` and include some basic comments to help you know what everything does.
+
+## App Reference
+
+Below are all of the functions and global variables used to make SkeleWiki function with additional details to help clarify their use:
+
+- `add()`: Create a new page element &amp; start editing
+- `ce()`: Short alias of `document.getElementById`
+- `current`: The current page id
+- `del()`: Delete the page with the given id
+- `edit()`: Show (default) or hide a form to edit the page with given id. Also updates nav entry.
+- `gebi()`: Short alias of `document.getElementById()`
+- `go()`: Show page element with given name or id, or home page if none is given. If back == true, don't update url hash
+- `h()`: Get and/or set the URL hash
+- `handleTab()`: Enable typing tab characters in all textarea Elements without class `notab`
+- `info()`: Get page details as object from element
+- `main`: Reference to the `&lt;main&gt;` element
+- `md()`: Parse Markdown into HTML
+- `nav`: Reference to the `&lt;ul&gt;` element within the `&lt;nav&gt;` in the site header
+- `navItem()`: Return a nav li element for the given page element
+- `pages()`: Get current page Elements as array
+- `q()`: Short alias of `document.querySelector()`
+- `qa()`: Short alias of `document.querySelectorAll()`
+- `render()`: If page id given, re-render stored Markdown directly into the element &amp; update nav text
+- `res`: Reference to the element where search results are displayed
+- `save()`: Reset to default state, remove rendered Markdown, start download of HTML file, and reset to current view
+- `sBar`: Reference to the `&lt;input&gt;` element where searches are done
+- `search()`: Check all pages for text matching the given term
+- `settingFields()`: Get the names of all settings form inputs
+- `settings()`: Show (default) or hide settings dialog
+- `show()`: Show (default) or hide the given page element
+- `update()`: Save the settings dialog &amp; update innerHTML of all elements with ids matching the input name
+- `wikiLinks()`: Parse \[\[wiki links\]\] into HTML `&lt;a&gt;` tags
 
 ## Ideas
 
@@ -439,22 +487,73 @@ Pretty much anywhere else is untouched by the JavaScript and can be modified. If
 - Don't like the Markdown parser? Replace it! As long as whatever parser you use has its parse function set to `window.md()`, SkeleWiki should handle it fine!</pre>
 <article hidden="true"></article>
 <footer>
-	<time title="Created 2/9/2024, 3:20:59 PM">2/13/2024, 6:00:11 PM</time> <button class="dull editButton" onclick="edit(1707517259013)">Edit</button>
+<time title="Created 2/9/2024, 3:20:59 PM">2/13/2024, 11:57:41 PM</time> <button class="dull editButton" onclick="edit(1707517259013)">Edit</button>
 </footer></section><section id="1707872418096" style=""><h1>Publishing</h1>
-<pre>If you're done working on your SkeleWiki's content and you want to present it a little bit more professionally, there are a few things you can do to make your finished product even better!
+<pre>If you're done working on your SkeleWiki's content, all you really need to do to publish your work is upload the HTML file somewhere that can be accessed by a web browser. But if you want to present it in a way that looks a little more finalized, there are a few things you can do to make your finished product even better!
 
 ## Hide the Edit Buttons
 
-// some CSS
+The easiest way to make your SkeleWiki not immediately editable would be to simply hide the management buttons that create and edit pages. You can do that by simply adding some CSS to make them not display:
+
+```css
+#actions :last-child,
+.editBtn {
+	display: none;
+}
+```
+
+Keep in mind that simply hiding the buttons means that they are still present in the HTML, so if that bothers you, you might want to look into the more drastic option of _deleting_ the HTML.
+
+The primary benefit of simply hiding the buttons is that you can un-hide them later and use them to make changes to your site as normal, but they do remain as an extra little bit of dead weight in the HTML.
+
+## _Remove_ the Edit Buttons
+
+This option may be a bit more dramatic than necessary since the vast majority of people aren't going to be looking at your site's raw HTML, but if you want to take that extra step, you can run the following script to remove all the edit buttons from the code:
+
+```javascript
+qa('#actions :last-child, .editBtn').forEach(el =&gt; el.parentNode.removeChild(el));
+```
+
+You can run this in your browser's inspector console and then save your wiki with &lt;kbd&gt;Ctrl&lt;/kbd&gt; or &lt;kbd&gt;Command&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt; to make it permanent. The new file will be missing the "Settings," "New Page," and "Save" buttons in addition to the "Edit" button on every page.
+
+An additional benefit of removing these buttons is that it reduces the final size of your HTML file a little bit more. You can go one step further and remove no longer needed SkeleWiki code like the `add()`, `del()`, and `edit()` functions, but that will prevent you from making any new pages ever again. If you keep them in the code, you will still be able to use your browser's inspector to manage your site in case you need to make edits.
 
 ## Minify the File
 
-SkeleWiki is already quite small, but it can absolutely be smaller</pre>
+SkeleWiki is already quite small, but it can absolutely be smaller. The official HTML is not minified for the purpose of remaining easily hackable by anyone who wants to dig into the code, so running the HTML through a minifier to remove extra spaces and comments will immediately make HTML much smaller!
+
+For example, using one minifier online brought version 1.0.0 of the SkeleWiki core down from about 19 to only 13 kilobytes! Using it on your site's HTML in addition to just the SkeleWiki code will help keep your final HTML size as small as possible, making your site display practically instantaneously.
+
+## Add Offline Mode
+
+This is optional and actually adds extra code for your users to download, but the benefit is that after they visit your site once, they'll be able to access a copy of the data on the site for as long as their browser cache doesn't get cleared even if they don't have internet access or your server goes down.
+
+You can very easily add a script called [UpUp](https://www.talater.com/upup/) and have your offline site available with hardly any work! Download &lt;a href="https://github.com/TalAter/UpUp/blob/master/dist/upup.zip"&gt;`upup.zip` from the GitHub Repo&lt;/a&gt;, extract the files, and put the `upup.min.js` &amp; `upup.sw.min.js` files in the same directory as your SkeleWiki file on your server. Then in the HTML, just add this script tag before the closing body tag:
+
+```html
+&lt;script src="upup.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+UpUp.start({
+  'content-url': 'index.html',
+});
+&lt;/script&gt;
+```
+
+Replace `index.html` with the actual name of your SkeleWiki file if it's different. If you have other files, you can include those in the offline cache by including their paths in an `assets` key like so:
+
+```html
+UpUp.start({
+  'content-url': 'index.html',
+  assets: ['img/logo.png', 'css/style.css', 'headlines.json'],
+});
+```
+
+It's important to note that UpUp will only work if you are serving the files from a URL served over HTTPS, so this will only be useful if you're publishing on an actual domain with an SSL certificate.</pre>
 <article hidden="true"></article>
 <footer>
-	<time title="Created 2/13/2024, 6:00:18 PM">2/13/2024, 6:02:01 PM</time> <button class="dull editBtn" onclick="edit(1707872418096)">Edit</button>
+<time title="Created 2/13/2024, 6:00:18 PM">2/13/2024, 11:21:43 PM</time> <button class="dull editBtn" onclick="edit(1707872418096)">Edit</button>
 </footer></section></main>
-<script defer="">
+<script defer>
 // Aliases for space savings
 const w = window;
 w.q = (s, el) => (el ?? document).querySelector(s);
@@ -463,6 +562,8 @@ w.gebi = i => document.getElementById(i);
 w.ce = t => document.createElement(t);
 w.main = q('main');
 w.nav = q('nav ul');
+w.sBar = q('#search input');
+w.res = q('#results');
 // Get and/or set the URL hash
 w.h = hash => (!hash ? true : location.hash = hash) && (!location.hash ? null : decodeURIComponent(location.hash.substring(1)));
 // The current page id
@@ -603,10 +704,9 @@ w.del = id => {
 };
 // Check all pages for text matching the given term
 w.search = term => {
-	const r = q('#search #results');
-	clearTimeout(r.debounce);
-	r.debounce = setTimeout(() => {
-		r.innerHTML = '';
+	clearTimeout(res.debounce);
+	res.debounce = setTimeout(() => {
+		res.innerHTML = '';
 		if (!term) return;
 		const lcTerm = term.toLowerCase();
 		pages().map(p => {
@@ -641,7 +741,7 @@ w.search = term => {
 				const txt = p.txt.replace(p.name, '');
 				const i = txt.toLowerCase().indexOf(lcTerm);
 				const preview = txt.length < 1 ? '' : txt.substring(Math.max(0, i - 10), Math.min(100, txt.length, i + term.length + 10));
-				r.innerHTML += /*html*/`<a href="javascript:go(${p.id})" onclick="q('#search #results').innerHTML = ''">${mark(p.name)}<p class="sm">${mark(preview)}</p></a>`;
+				res.innerHTML += /*html*/`<a href="javascript:go(${p.id})" onclick="res.innerHTML = ''">${mark(p.name)}<p class="sm">${mark(preview)}</p></a>`;
 			});
 	}, 300);
 };
@@ -665,9 +765,8 @@ w.render = (pId = null) => {
 w.save = () => {
 	go(); // go to home page
 	const pp = pages();
-	const s = q('#search');
-	q('input', s).value = '';
-	q('#results', s).innerHTML = '';
+	sBar.value = '';
+	res.innerHTML = '';
 	pp.forEach(p => {
 		const txt = q('pre', p).removeAttribute('hidden');
 		const a = q('article', p);
@@ -683,7 +782,7 @@ w.save = () => {
 <body>${document.body.innerHTML}</body></html>`;
 	render();
 	history.back();
-
+	// Create & click anchor tag with download attribute
 	const a = ce('a');
 	a.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(html));
 	const filename = name.toLowerCase().replace(/\W/g, '_') + '.html';
@@ -704,6 +803,9 @@ w.addEventListener('keydown', e => {
 w.addEventListener('popstate', e => {
 	go(h(), true);
 });
+// Trigger search on input and focus of search bar
+['input', 'focus'].forEach(e => sBar.addEventListener(e, ({ target }) => search(target.value)));
+
 // Initialize the view
 (() => {
 	render();
@@ -861,5 +963,4 @@ function md(src) {
 	return src.trim();
 }
 </script>
-
 </body></html>
