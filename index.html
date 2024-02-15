@@ -3,8 +3,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="version" content="1.0.0">
-<meta name="application-name" content="SkeleWiki">
-<title>SkeleWiki</title>
+<meta name="application-name" content="siteleteer">
+<title>siteleteer</title>
 <style id="css">
 :root {
 	--text: #000;
@@ -199,8 +199,8 @@ main>section>footer>time::before {content: 'Updated '}
 <body>
 <header>
 	<section id="wiki">
-		<a href="javascript:go()" id="name">SkeleWiki</a>
-		<span id="desc">A <em>dead</em> simple tool to make bare <em>bones</em> multi-page websites in a single HTML file.</span>
+		<a href="javascript:go()" id="name">siteleteer</a>
+		<span id="desc">A tiny, self-replicating tool for building multi-page websites in a single HTML file.</span>
 	</section>
 	<section id="actions">
 		<div id="search" style="flex:1">
@@ -227,21 +227,21 @@ main>section>footer>time::before {content: 'Updated '}
 		</footer>
 	</form>
 </dialog>
-<main><section id="1707517025349" style="display: block;"><h1>About SkeleWiki</h1>
-<pre>SkeleWiki is a super hackable, self-replicating web app that lets you create inter-linking pages formatted with Markdown. All data created with SkeleWiki is simply stored directly as HTML on the page, and the code within the HTML file is not minified at all, making it easier to simply crack open in a text editor and modify however you wish!
+<main><section id="1707517025349" style="display: block;"><h1>About siteleteer</h1>
+<pre>**siteleteer** is a super hackable, self-replicating web app that lets you create inter-linking pages formatted with Markdown. All data created with **siteleteer** is simply stored directly as HTML on the page, and the code within the HTML file is not minified at all, making it easier to simply crack open in a text editor and modify however you wish!
 
 It's page management with Markdown formatting and a simple search bar all rolled up into a single HTML file that's _less than 20 kilobytes!_
 
 ## How to Use
 
-Just &lt;a href="https://codeberg.org/Alamantus/SkeleWiki/raw/branch/main/skelewiki.html" download="skelewiki.html" target="_blank"&gt;download the SkeleWiki HTML file&lt;/a&gt; and open it in a browser to get started. It's pretty simple:
+Just &lt;a href="https://codeberg.org/Alamantus/siteleteer/raw/branch/main/siteleteer.html" download="siteleteer.html" target="_blank"&gt;download a blank **siteleteer** HTML file&lt;/a&gt; and open it in a browser to get started. It's pretty simple:
 
 - Use the "Settings" button to change the wiki's name, description, and CSS, then push "Save" to make your changes.
 - Create a new page by using the "New Page" button. This will create an empty page that you can start editing right away.
 	- Set a page title in the "Name" field and write some text for the page with Markdown formatting.
 		- In addition to Markdown, you can link between pages using wiki link format by putting the (case insensitive) page name in 2 square braces \[\[like this\]\]! If you want the link to have different text than the page's name, then put the page name first then the text to display after a vertical bar \[\[other page|like this\]\]!
 	- If you have multiple pages, you can change the order they display in the navigation by changing the Sort Position.
-	- The page in the `0` position will be the "home" page of your SkeleWiki that is displayed when the file loads or when the Wiki Title is clicked.
+	- The page in the `0` position will be the "home" page of your **siteleteer** that is displayed when the file loads or when the Wiki Title is clicked.
 	- Use "Save" to save the page and view the page.
 	- Use "Cancel" to prevent any changes from being saved (results in an empty page if it's newly created).
 	- Use "Delete" to remove the page and navigation entry.
@@ -251,7 +251,7 @@ Just &lt;a href="https://codeberg.org/Alamantus/SkeleWiki/raw/branch/main/skelew
 
 And that's pretty much it!
 
-If you want to get a good idea of how to use SkeleWiki, you can make changes to and download _this_ site by just clicking the "Save" button in the top right corner! Any changes you make will be saved as a new file on your computer, but they aren't permanent and will reset if you refresh the page.
+If you want to get an idea of how to use **siteleteer**, you can make changes to and download _this_ site by just clicking the "Save" button in the top right corner! Any changes you make will be saved as a new file on your computer, but they aren't permanent and will reset if you refresh the page.
 
 ### Particularities
 
@@ -271,7 +271,7 @@ Being a tiny platform with as little unnecessary functionality as possible, ther
 - The "Updated" timestamp at the bottom of a page is set to _your_ local date and time.
 - Hover over the "Updated" timestamp at the bottom of a page to see the timestamp of when the page was first created, i.e. the moment "New Page" was pressed.
 - Search prioritizes exact matches over case-insensitive ones and will display matching pages in order by where the match is found, prioritizing page names over page text, and only the text content of the parsed Markdown is searched when looking for results within the page text.
-- Very large amounts of content on a page and very large numbers of pages may affect the performance of your SkeleWiki because it just uses and manipulates the raw DOM.
+- Very large amounts of content on a page and very large numbers of pages may affect the performance of your **siteleteer** because it just uses and manipulates the raw DOM.
 - Only the Markdown of each page is saved and can be found directly in the HTML file within a `pre` tag in the page's `section` tag. It's parsed into formatted HTML that displays when the page is loaded and the JavaScript runs.
 - All pages are on the same level and display in the wiki nav bar.</pre>
 <article hidden="true"></article>
@@ -431,7 +431,7 @@ Your computer crashed? Try sending a
 <article hidden="true"></article>
 <footer>
 <time title="Created 2/9/2024, 3:19:36 PM">2/9/2024, 3:20:16 PM</time> <button class="dull editButton" onclick="edit(1707517176500)">Edit</button>
-</footer></section><section id="1707517259013" style=""><h1>Hacking SkeleWiki</h1>
+</footer></section><section id="1707517259013" style=""><h1>Hacking siteleteer</h1>
 <pre>Since it's literally just an HTML file with all its code visibly formatted in the way the developer writes it, you can just change the content or behavior! All you need is a text editor and a basic understanding of web development (HTML, CSS, and JavaScript).
 
 The only HTML altered by the app is:
@@ -444,11 +444,11 @@ The only HTML altered by the app is:
 
 Pretty much anywhere else is untouched by the JavaScript and can be modified. If you need to add meta tags to the head or additional code, you can just do that. In addition, all the app functions can be accessed through `window` in JavaScript. There are also a couple helper methods in there to keep the code small.
 
-All the functions that control the app are set directly in the `window` and include some basic comments to help you know what everything does, and all the site data is stored directly in the HTML within `&lt;pre&gt;` tags as Markdown. The only thing to be aware of is that all HTML elements (i.e. `&lt;` and `&gt;` characters) are stored as HTML entities (i.e. `&amp;lt;` and `&amp;gt;`). If processing the Markdown outside of SkeleWiki, be sure to re-encode the HTML entities into their appropriate characters or else it may not parse properly.
+All the functions that control the app are set directly in the `window` and include some basic comments to help you know what everything does, and all the site data is stored directly in the HTML within `&lt;pre&gt;` tags as Markdown. The only thing to be aware of is that all HTML elements (i.e. `&lt;` and `&gt;` characters) are stored as HTML entities (i.e. `&amp;lt;` and `&amp;gt;`). If processing the Markdown outside of **siteleteer**, be sure to re-encode the HTML entities into their appropriate characters or else it may not parse properly.
 
 ## App Reference
 
-Below are all of the functions and global variables used to make SkeleWiki function with additional details to help clarify their use:
+Below are all of the functions and global variables used to make **siteleteer** function with additional details to help clarify their use:
 
 - `add()`: Create a new page element &amp; start editing.
 - `ce(tagName: string)`: Short alias of `document.getElementById`.
@@ -482,18 +482,18 @@ Below are all of the functions and global variables used to make SkeleWiki funct
 
 - Don't want your updated time visible on a page? Find the `main&gt;section&gt;footer&gt;time` entry in the Wiki CSS and add `display: none;` to hide it.
 	- Don't want it in the HTML at all? Then you'll need to update the code to stop the `&lt;time&gt;` elements from being created and then remove them from your HTML. It's set in the `add()` method and modified in the `edit()` method.
-- Need SkeleWiki in your own language? Just modify the UI text in the HTML file!
+- Need **siteleteer** in your own language? Just modify the UI text in the HTML file!
 - Want to restructure the whole app? You can change the CSS and HTML completely if you need to! Just check the code for any expected structure patterns first so you don't break anything.
-- Don't like the Markdown parser? Replace it! As long as whatever parser you use has its parse function set to `window.md()`, SkeleWiki should handle it fine!</pre>
+- Don't like the Markdown parser? Replace it! As long as whatever parser you use has its parse function set to `window.md()`, **siteleteer** should handle it fine!</pre>
 <article hidden="true"></article>
 <footer>
 <time title="Created 2/9/2024, 3:20:59 PM">2/14/2024, 22:57:41 PM</time> <button class="dull editButton" onclick="edit(1707517259013)">Edit</button>
 </footer></section><section id="1707872418096" style=""><h1>Publishing</h1>
-<pre>If you're done working on your SkeleWiki's content, all you really need to do to publish your work is upload the HTML file somewhere that can be accessed by a web browser. But if you want to present it in a way that looks a little more finalized, there are a few things you can do to make your finished product even better!
+<pre>If you're done working on your **siteleteer**'s content, all you really need to do to publish your work is upload the HTML file somewhere that can be accessed by a web browser. But if you want to present it in a way that looks a little more finalized, there are a few things you can do to make your finished product even better!
 
 ## Hide the Edit Buttons
 
-The easiest way to make your SkeleWiki not immediately editable would be to simply hide the management buttons that create and edit pages. You can do that by simply adding some CSS to make them not display:
+The easiest way to make your **siteleteer** not immediately editable would be to simply hide the management buttons that create and edit pages. You can do that by simply adding some CSS to make them not display:
 
 ```css
 #actions :last-child,
@@ -516,19 +516,19 @@ qa('#actions :last-child, .editBtn').forEach(el =&gt; el.parentNode.removeChild(
 
 You can run this in your browser's inspector console and then save your wiki with &lt;kbd&gt;Ctrl&lt;/kbd&gt; or &lt;kbd&gt;Command&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt; to make it permanent. The new file will be missing the "Settings," "New Page," and "Save" buttons in addition to the "Edit" button on every page.
 
-An additional benefit of removing these buttons is that it reduces the final size of your HTML file a little bit more. You can go one step further and remove no longer needed SkeleWiki code like the `add()`, `del()`, and `edit()` functions, but that will prevent you from making any new pages ever again. If you keep them in the code, you will still be able to use your browser's inspector to manage your site in case you need to make edits.
+An additional benefit of removing these buttons is that it reduces the final size of your HTML file a little bit more. You can go one step further and remove no longer needed **siteleteer** code like the `add()`, `del()`, and `edit()` functions, but that will prevent you from making any new pages ever again. If you keep them in the code, you will still be able to use your browser's inspector to manage your site in case you need to make edits.
 
 ## Minify the File
 
-SkeleWiki is already quite small, but it can absolutely be smaller. The official HTML is not minified for the purpose of remaining easily hackable by anyone who wants to dig into the code, so running the HTML through a minifier to remove extra spaces and comments will immediately make HTML much smaller!
+**siteleteer** is already quite small, but it can absolutely be smaller. The official HTML is not minified for the purpose of remaining easily hackable by anyone who wants to dig into the code, so running the HTML through a minifier to remove extra spaces and comments will immediately make HTML much smaller!
 
-For example, using one minifier online brought version 1.0.0 of the SkeleWiki core down from about 19 to only 13 kilobytes! Using it on your site's HTML in addition to just the SkeleWiki code will help keep your final HTML size as small as possible, making your site display practically instantaneously.
+For example, using one minifier online brought version 1.0.0 of the **siteleteer** core down from about 19 to only 13 kilobytes! Using it on your site's HTML in addition to just the **siteleteer** code will help keep your final HTML size as small as possible, making your site display practically instantaneously.
 
 ## Add Offline Mode
 
 This is optional and actually adds extra code for your users to download, but the benefit is that after they visit your site once, they'll be able to access a copy of the data on the site for as long as their browser cache doesn't get cleared even if they don't have internet access or your server goes down.
 
-You can very easily add a script called [UpUp](https://www.talater.com/upup/) and have your offline site available with hardly any work! Download &lt;a href="https://github.com/TalAter/UpUp/blob/master/dist/upup.zip"&gt;`upup.zip` from the GitHub Repo&lt;/a&gt;, extract the files, and put the `upup.min.js` &amp; `upup.sw.min.js` files in the same directory as your SkeleWiki file on your server. Then in the HTML, just add this script tag before the closing body tag:
+You can very easily add a script called [UpUp](https://www.talater.com/upup/) and have your offline site available with hardly any work! Download &lt;a href="https://github.com/TalAter/UpUp/blob/master/dist/upup.zip"&gt;`upup.zip` from the GitHub Repo&lt;/a&gt;, extract the files, and put the `upup.min.js` &amp; `upup.sw.min.js` files in the same directory as your **siteleteer** file on your server. Then in the HTML, just add this script tag before the closing body tag:
 
 ```html
 &lt;script src="upup.min.js"&gt;&lt;/script&gt;
@@ -539,7 +539,7 @@ UpUp.start({
 &lt;/script&gt;
 ```
 
-Replace `index.html` with the actual name of your SkeleWiki file if it's different. If you have other files, you can include those in the offline cache by including their paths in an `assets` key like so:
+Replace `index.html` with the actual name of your **siteleteer** file if it's different. If you have other files, you can include those in the offline cache by including their paths in an `assets` key like so:
 
 ```html
 UpUp.start({
