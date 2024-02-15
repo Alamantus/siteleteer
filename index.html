@@ -234,7 +234,7 @@ It's page management with Markdown formatting and a simple search bar all rolled
 
 ## How to Use
 
-Just download the HTML file and open it in a browser to get started. It's pretty simple:
+Just &lt;a href="https://codeberg.org/Alamantus/SkeleWiki/raw/branch/main/skelewiki.html" download="skelewiki.html" target="_blank"&gt;download the SkeleWiki HTML file&lt;/a&gt; and open it in a browser to get started. It's pretty simple:
 
 - Use the "Settings" button to change the wiki's name, description, and CSS, then push "Save" to make your changes.
 - Create a new page by using the "New Page" button. This will create an empty page that you can start editing right away.
@@ -444,39 +444,39 @@ The only HTML altered by the app is:
 
 Pretty much anywhere else is untouched by the JavaScript and can be modified. If you need to add meta tags to the head or additional code, you can just do that. In addition, all the app functions can be accessed through `window` in JavaScript. There are also a couple helper methods in there to keep the code small.
 
-All the functions that control the app are set directly in the `window` and include some basic comments to help you know what everything does.
+All the functions that control the app are set directly in the `window` and include some basic comments to help you know what everything does, and all the site data is stored directly in the HTML within `&lt;pre&gt;` tags as Markdown. The only thing to be aware of is that all HTML elements (i.e. `&lt;` and `&gt;` characters) are stored as HTML entities (i.e. `&amp;lt;` and `&amp;gt;`). If processing the Markdown outside of SkeleWiki, be sure to re-encode the HTML entities into their appropriate characters or else it may not parse properly.
 
 ## App Reference
 
 Below are all of the functions and global variables used to make SkeleWiki function with additional details to help clarify their use:
 
-- `add()`: Create a new page element &amp; start editing
-- `ce()`: Short alias of `document.getElementById`
-- `current`: The current page id
-- `del()`: Delete the page with the given id
-- `edit()`: Show (default) or hide a form to edit the page with given id. Also updates nav entry.
-- `gebi()`: Short alias of `document.getElementById()`
-- `go()`: Show page element with given name or id, or home page if none is given. If back == true, don't update url hash
-- `h()`: Get and/or set the URL hash
-- `handleTab()`: Enable typing tab characters in all textarea Elements without class `notab`
-- `info()`: Get page details as object from element
-- `main`: Reference to the `&lt;main&gt;` element
-- `md()`: Parse Markdown into HTML
-- `nav`: Reference to the `&lt;ul&gt;` element within the `&lt;nav&gt;` in the site header
-- `navItem()`: Return a nav li element for the given page element
-- `pages()`: Get current page Elements as array
-- `q()`: Short alias of `document.querySelector()`
-- `qa()`: Short alias of `document.querySelectorAll()`
-- `render()`: If page id given, re-render stored Markdown directly into the element &amp; update nav text
-- `res`: Reference to the element where search results are displayed
-- `save()`: Reset to default state, remove rendered Markdown, start download of HTML file, and reset to current view
-- `sBar`: Reference to the `&lt;input&gt;` element where searches are done
-- `search()`: Check all pages for text matching the given term
-- `settingFields()`: Get the names of all settings form inputs
-- `settings()`: Show (default) or hide settings dialog
-- `show()`: Show (default) or hide the given page element
-- `update()`: Save the settings dialog &amp; update innerHTML of all elements with ids matching the input name
-- `wikiLinks()`: Parse \[\[wiki links\]\] into HTML `&lt;a&gt;` tags
+- `add()`: Create a new page element &amp; start editing.
+- `ce(tagName: string)`: Short alias of `document.getElementById`.
+- `current: string`: The current page id.
+- `del(pageId: string|number)`: Delete the page with the given id. Asks for confirmation before deletion.
+- `edit(pageId: string|number, yes: boolean = true)`: Show (default) or hide a form to edit the page with given id. Also updates nav entry.
+- `gebi(id: string)`: Short alias of `document.getElementById()`.
+- `go(pageIdOrName?: string, back: boolean = false)`: Show page element with given name or id, or home page if none is given. If back == true, don't update url hash
+- `h(hash?: string)`: Get and/or set the URL hash. If `hash` is set, then set the URL hash. Either way, it returns the current URL hash from `window.location.hash`.
+- `handleTab()`: Sets the `onkeydown` attribute of all existing `&lt;textarea&lt;` elements without class `notab` to enable typing the `Tab` character when <kbd>Tab</kbd> is typed. If <kbd>Shift</kbd> is held, the focus will move to the previous focusable element instead of inserting a `Tab`.
+- `info(element: HTMLElement)`: Get page details as object from the given element. Object contains the page element's `id` as a string, page `name` as a string, and `src` containing the raw Markdown content of the page.
+- `main: HTMLElement`: Reference to the `&lt;main&gt;` HTMLElement
+- `md(markdown?: string)`: Parse given Markdown into HTML. If empty, returns an empty string.
+- `nav: HTMLUListElement`: Reference to the `&lt;ul&gt;` element within the `&lt;nav&gt;` in the site header.
+- `navItem(element: HTMLElement)`: Given a page element, return a new `&lt;li&gt;` element to insert into the site nav with a link to the given page with text equal to the name of the page.
+- `pages()`: Get all current page HTMLElements as an array.
+- `q(selector: string, element?: HTMLElement)`: Short alias of `querySelector()`. If no `element` is provided, `document` is used by default.
+- `qa(selector: string, element?: HTMLElement)`: Short alias of `document.querySelectorAll()`. If no `element` is provided, `document` is used by default.
+- `render(pageId?: string)`: If `pageId` is given, re-render stored Markdown directly into the element &amp; update nav text. Otherwise, re-render all stored Markdown into the `&lt;main&gt;` element and re-create the `&lt;nav&gt;` element.
+- `res: HTMLElement`: Reference to the element where search results are displayed. If empty, the element is hidden.
+- `save()`: Reset to default state, remove rendered Markdown, start download of HTML file, and then reset the display to current view.
+- `sBar: HTMLInputElement`: Reference to the `&lt;input&gt;` element where searches are done. The element has event listeners on the `keydown` and `focus` events to run `search()` using the input value when triggered.
+- `search(term: string)`: Check all pages for text matching the given term. If no results or an empty `term` are provided, the `res` element will be empty and not visible, otherwise it will display the search results.
+- `settingFields()`: Get the names of all form inputs within the settings dialog. These field names are intended to match an HTMLElement id elsewhere in the HTML.
+- `settings(close?: boolean)`: Show (default) or hide settings dialog. When opened, the field values are populated with the `innerHTML` of the HTMLElements with the same name as the `&lt;input&gt;` elements.
+- `show(element: HTMLElement, yes: boolean = true)`: Show (default) or hide the given page element. Page `&lt;section&gt;` elements are hidden by default and displayed by setting `style="display:block"` on the element. If `yes` is set to `false`, then the `display` style is removed, hiding the page.
+- `update(form: HTMLFormElement)`: Save the settings dialog &amp; update innerHTML of all elements with ids matching the input name within the `&lt;form&gt;`.
+- `wikiLinks(text: string)`: Parse all \[\[wiki links\]\] in the given text into HTML `&lt;a&gt;` tags that link to the name or id of the page within the double braces using `javascript:go()` as the `href` attribute. The link text can be set by using a vertical bar `|` to separate the page name/id and the link text \[\[other page|like this\]\].
 
 ## Ideas
 
