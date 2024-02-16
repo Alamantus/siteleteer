@@ -14,7 +14,7 @@
 	--bg: #FAFFED;
 	--accent1: #3D9519;
 	--accent2: #080278;
-	--dull: #F8B503;
+	--dull: #FAB503;
 	--bad: #A4114A;
 	--link-style: underline;
 	--btn-pad: calc(var(--space) / 2) var(--space);
@@ -197,7 +197,7 @@ main>section>footer>time::before {content: 'Updated '}</style>
 <body>
 <header>
 	<section id="wiki">
-		<a href="javascript:go()" id="name">siteleteer</a>
+		<a href="javascript:go()" id="name" style="">siteleteer</a>
 		<span id="desc">A tiny, self-replicating tool for building multi-page websites in a single HTML file.</span>
 	</section>
 	<section id="actions">
@@ -211,7 +211,7 @@ main>section>footer>time::before {content: 'Updated '}</style>
 			<button id="saveBtn" onclick="save()">Save</button>
 		</div>
 	</section>
-	<nav><ul></ul></nav>
+	<nav><ul><li><a href="javascript:go('1707517025349')" id="nav1707517025349">About siteleteer</a></li><li><a href="javascript:go('1708100358367')" id="nav1708100358367">Peculiarities</a></li><li><a href="javascript:go('1707517176500')" id="nav1707517176500">Markdown Support</a></li><li><a href="javascript:go('1707517259013')" id="nav1707517259013">Hacking siteleteer</a></li><li><a href="javascript:go('1707872418096')" id="nav1707872418096">Publishing</a></li></ul></nav>
 </header>
 <dialog id="settings">
 	<h1>Settings</h1>
@@ -226,7 +226,7 @@ main>section>footer>time::before {content: 'Updated '}</style>
 	</form>
 </dialog>
 <main><section id="1707517025349" style="display: block;"><h1>About siteleteer</h1>
-<pre>**siteleteer** is a super hackable, self-replicating web app that lets you create inter-linking pages formatted with Markdown. All data created with **siteleteer** is simply stored directly as HTML on the page, and the code within the HTML file is not minified at all, making it easier to simply crack open in a text editor and modify however you wish!
+<pre>**siteleteer** is a super hackable, self-replicating web app that lets you create sitelets (mini websites) with inter-linking pages formatted with [[Markdown Support|Markdown]]. All data created with **siteleteer** is simply stored directly as HTML on the page, and the code within the HTML file is not minified at all, making it easier to simply crack open in a text editor and modify however you wish!
 
 It's page management with Markdown formatting and a simple search bar all rolled up into a single HTML file that's _less than 20 kilobytes!_
 
@@ -237,7 +237,7 @@ Just &lt;a href="https://codeberg.org/Alamantus/siteleteer/raw/branch/main/sitel
 - Use the "Settings" button to change the wiki's name, description, and CSS, then push "Save" to make your changes.
 - Create a new page by using the "New Page" button. This will create an empty page that you can start editing right away.
 	- Set a page title in the "Name" field and write some text for the page with Markdown formatting.
-		- In addition to Markdown, you can link between pages using wiki link format by putting the (case insensitive) page name in 2 square braces \[\[like this\]\]! If you want the link to have different text than the page's name, then put the page name first then the text to display after a vertical bar \[\[other page|like this\]\]!
+		- In addition to Markdown, you can link between pages using wiki link format by putting the (case-sensitive) page name in 2 square braces \[\[like this\]\]! If you want the link to have different text than the page's name, then put the page name first then the text to display after a vertical bar \[\[Other Page|like this\]\]!
 	- If you have multiple pages, you can change the order they display in the navigation by changing the Sort Position.
 	- The page in the `0` position will be the "home" page of your **siteleteer** that is displayed when the file loads or when the Wiki Title is clicked.
 	- Use "Save" to save the page and view the page.
@@ -247,13 +247,14 @@ Just &lt;a href="https://codeberg.org/Alamantus/siteleteer/raw/branch/main/sitel
 - Click the "Edit" button at the bottom of a page to change that page. The date at the bottom of the page will be updated when you save your changes.
 - Save your changes to a new HTML file by using the "Save" button (or &lt;kbd&gt;Ctrl&lt;/kbd&gt;/&lt;kbd&gt;Command&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt;). The HTML file defaults to a lowercase version of your wiki's name with any non-alphanumeric characters converted to underscores `like_this.html`.
 
-And that's pretty much it!
+And that's pretty much it, though you'll want to be aware of some [[Peculiarities|peculiarities]] of the system.
 
-If you want to get an idea of how to use **siteleteer**, you can make changes to and download _this_ site by just clicking the "Save" button in the top right corner! Any changes you make will be saved as a new file on your computer, but they aren't permanent and will reset if you refresh the page.
-
-### Particularities
-
-Being a tiny platform with as little unnecessary functionality as possible, there are some behaviors that you should keep in mind while using it. Here's everything that might be unexpected in no particular order:
+If you want to get an idea of how to use **siteleteer**, you can make changes to and download _this_ site by just clicking the "Save" button in the top right corner! Any changes you make will be saved as a new file on your computer, but they aren't permanent and will reset if you refresh the page.</pre>
+<article hidden="true"></article>
+<footer>
+<time title="Created 2/9/2024, 3:17:05 PM">2/16/2024, 9:33:52 AM</time> <button class="dull editButton" onclick="edit(1707517025349)">Edit</button>
+</footer></section><section id="1708100358367" style=""><h1>Peculiarities</h1>
+<pre>Being a tiny platform with as little unnecessary functionality as possible, there are some behaviors that you should keep in mind while using it. Here's everything that might be unexpected in no particular order:
 
 - New pages are always added to the end of the page order, and thus the end of the nav bar.
 - Pages without a name cannot be linked to and display in the navigation as "No content."
@@ -274,9 +275,9 @@ Being a tiny platform with as little unnecessary functionality as possible, ther
 - All pages are on the same level and display in the wiki nav bar.</pre>
 <article hidden="true"></article>
 <footer>
-<time title="Created 2/9/2024, 3:17:05 PM">2/14/2024, 22:29:10 PM</time> <button class="dull editButton" onclick="edit(1707517025349)">Edit</button>
+	<time title="Created 2/16/2024, 9:19:18 AM">2/16/2024, 9:19:35 AM</time> <button class="dull editBtn" onclick="edit(1708100358367)">Edit</button>
 </footer></section><section id="1707517176500" style=""><h1>Markdown Support</h1>
-<pre>Click the "Edit" button at the bottom of the page to see the markdown source!
+<pre>_**Click the "Edit" button at the bottom of the page to see the Markdown source!**_
 
 ---
 
@@ -428,7 +429,7 @@ Your computer crashed? Try sending a
 &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt;</pre>
 <article hidden="true"></article>
 <footer>
-<time title="Created 2/9/2024, 3:19:36 PM">2/9/2024, 3:20:16 PM</time> <button class="dull editButton" onclick="edit(1707517176500)">Edit</button>
+<time title="Created 2/9/2024, 3:19:36 PM">2/16/2024, 9:30:26 AM</time> <button class="dull editButton" onclick="edit(1707517176500)">Edit</button>
 </footer></section><section id="1707517259013" style=""><h1>Hacking siteleteer</h1>
 <pre>Since it's literally just an HTML file with all its code visibly formatted in the way the developer writes it, you can just change the content or behavior! All you need is a text editor and a basic understanding of web development (HTML, CSS, and JavaScript).
 
@@ -442,7 +443,7 @@ The only HTML altered by the app is:
 
 Pretty much anywhere else is untouched by the JavaScript and can be modified. If you need to add meta tags to the head or additional code, you can just do that. In addition, all the app functions can be accessed through `window` in JavaScript. There are also a couple helper methods in there to keep the code small.
 
-All the functions that control the app are set directly in the `window` and include some basic comments to help you know what everything does, and all the site data is stored directly in the HTML within `&lt;pre&gt;` tags as Markdown. The only thing to be aware of is that all HTML elements (i.e. `&lt;` and `&gt;` characters) are stored as HTML entities (i.e. `&amp;lt;` and `&amp;gt;`). If processing the Markdown outside of **siteleteer**, be sure to re-encode the HTML entities into their appropriate characters or else it may not parse properly.
+All the functions that control the app are set directly in the `window` and include some basic comments to help you know what everything does, and all the site data is stored directly in the HTML within `&lt;pre&gt;` tags as Markdown. The only thing to be aware of is that all HTML elements (i.e. `&lt;` and `&gt;` characters) are stored as HTML entities (i.e. `&lt;` and `&gt;`). If processing the Markdown outside of **siteleteer**, be sure to re-encode the HTML entities into their appropriate characters or else it may not parse properly.
 
 ## App Reference
 
@@ -454,9 +455,9 @@ Below are all of the functions and global variables used to make **siteleteer** 
 - `del(pageId: string|number)`: Delete the page with the given id. Asks for confirmation before deletion.
 - `edit(pageId: string|number, yes: boolean = true)`: Show (default) or hide a form to edit the page with given id. Also updates nav entry.
 - `gebi(id: string)`: Short alias of `document.getElementById()`.
-- `go(pageIdOrName?: string, back: boolean = false)`: Show page element with given name or id, or home page if none is given. If back == true, don't update url hash
+- `go(pageIdOrName?: string, back: boolean = false)`: Show page element with given name (case-sensitive) or id, or home page if none is given. If back == true, don't update url hash
 - `h(hash?: string)`: Get and/or set the URL hash. If `hash` is set, then set the URL hash. Either way, it returns the current URL hash from `window.location.hash`.
-- `handleTab()`: Sets the `onkeydown` attribute of all existing `&lt;textarea&lt;` elements without class `notab` to enable typing the `Tab` character when <kbd>Tab</kbd> is typed. If <kbd>Shift</kbd> is held, the focus will move to the previous focusable element instead of inserting a `Tab`.
+- `handleTab()`: Sets the `onkeydown` attribute of all existing `&lt;textarea&lt;` elements without class `notab` to enable typing the `Tab` character when Tab is typed. If Shift is held, the focus will move to the previous focusable element instead of inserting a `Tab`.
 - `info(element: HTMLElement)`: Get page details as object from the given element. Object contains the page element's `id` as a string, page `name` as a string, and `src` containing the raw Markdown content of the page.
 - `main: HTMLElement`: Reference to the `&lt;main&gt;` HTMLElement
 - `md(markdown?: string)`: Parse given Markdown into HTML. If empty, returns an empty string.
@@ -485,7 +486,7 @@ Below are all of the functions and global variables used to make **siteleteer** 
 - Don't like the Markdown parser? Replace it! As long as whatever parser you use has its parse function set to `window.md()`, **siteleteer** should handle it fine!</pre>
 <article hidden="true"></article>
 <footer>
-<time title="Created 2/9/2024, 3:20:59 PM">2/14/2024, 22:57:41 PM</time> <button class="dull editButton" onclick="edit(1707517259013)">Edit</button>
+<time title="Created 2/9/2024, 3:20:59 PM">2/16/2024, 9:34:21 AM</time> <button class="dull editButton" onclick="edit(1707517259013)">Edit</button>
 </footer></section><section id="1707872418096" style=""><h1>Publishing</h1>
 <pre>If you're done working on your **siteleteer**'s content, all you really need to do to publish your work is upload the HTML file somewhere that can be accessed by a web browser. But if you want to present it in a way that looks a little more finalized, there are a few things you can do to make your finished product even better!
 
@@ -551,7 +552,10 @@ It's important to note that UpUp will only work if you are serving the files fro
 <footer>
 <time title="Created 2/13/2024, 6:00:18 PM">2/13/2024, 11:21:43 PM</time> <button class="dull editBtn" onclick="edit(1707872418096)">Edit</button>
 </footer></section></main>
-<script defer>
+<footer style="padding:var(--pad);max-width:var(--max-width)">
+	Made <a href="https://codeberg.org/Alamantus/siteleteer" target="_blank">open source</a> with 💖 under an <a href="https://codeberg.org/Alamantus/siteleteer/src/branch/main/LICENSE" target="_blank">MIT license</a> by <a href="https://robbie.antenesse.net" target="_blank">Robbie Antenesse</a>
+</footer>
+<script defer="">
 // Aliases for space savings
 const w = window;
 w.q = (s, el) => (el ?? document).querySelector(s);
