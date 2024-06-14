@@ -2,7 +2,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="version" content="1.0.1">
+<meta name="version" content="1.0.2">
 <meta name="application-name" content="siteleteer">
 <title>siteleteer</title>
 <style id="css">:root {
@@ -211,7 +211,10 @@ main>section>footer>time::before {content: 'Updated '}</style>
 			<button id="saveBtn" onclick="save()">Save</button>
 		</div>
 	</section>
-	<nav><ul><li><a href="javascript:go('1707517025349')" id="nav1707517025349">About siteleteer</a></li><li><a href="javascript:go('1708100358367')" id="nav1708100358367">Peculiarities</a></li><li><a href="javascript:go('1707517176500')" id="nav1707517176500">Markdown Support</a></li><li><a href="javascript:go('1707517259013')" id="nav1707517259013">Hacking siteleteer</a></li><li><a href="javascript:go('1707872418096')" id="nav1707872418096">Publishing</a></li></ul></nav>
+	<details>
+		<summary style="cursor:pointer;">Menu</summary>
+		<nav><ul><li><a href="javascript:go('1707517025349')" id="nav1707517025349">About siteleteer</a></li><li><a href="javascript:go('1708100358367')" id="nav1708100358367">Peculiarities</a></li><li><a href="javascript:go('1707517176500')" id="nav1707517176500">Markdown Support</a></li><li><a href="javascript:go('1707517259013')" id="nav1707517259013">Hacking siteleteer</a></li><li><a href="javascript:go('1707872418096')" id="nav1707872418096">Publishing</a></li></ul></nav>
+	</details>
 </header>
 <dialog id="settings">
 	<h1>Settings</h1>
@@ -232,7 +235,7 @@ It's page management with Markdown formatting and a simple search bar all rolled
 
 ## How to Use
 
-Just &lt;a href="https://codeberg.org/Alamantus/siteleteer/raw/branch/main/siteleteer.html" download="siteleteer.html" target="_blank"&gt;download a blank **siteleteer** HTML file&lt;/a&gt; and open it in a browser to get started. It's pretty simple:
+Just <a href="https://codeberg.org/Alamantus/siteleteer/raw/branch/main/siteleteer.html" download="siteleteer.html" target="_blank">download a blank **siteleteer** HTML file</a> and open it in a browser to get started. It's pretty simple:
 
 - Use the "Settings" button to change the wiki's name, description, and CSS, then push "Save" to make your changes.
 - Create a new page by using the "New Page" button. This will create an empty page that you can start editing right away.
@@ -253,6 +256,10 @@ If you want to get an idea of how to use **siteleteer**, you can make changes to
 
 ## Changelog
 
+- 2024-06-14 [[Upgrade Guide]]
+	- Navigation is now in a `details` element labeled "Menu" that must be clicked to show the pages
+	- Making a wiki link to a nonexistent page will create a new one with the specified page name
+	- Saving won't navigate browser back if you're on the home page already.
 - 2024-03-27
 	- Fix load loop on empty siteleteer sites in Firefox
 	- Search results now hide when search bar loses focus
@@ -270,7 +277,7 @@ If you want to get an idea of how to use **siteleteer**, you can make changes to
 - Navigating to a different page while editing will change the page _immediately_ and **discard any unsaved changes** to the page.
 - Page names must be unique or else wiki links won't work unless you find and use the page's id instead of its name!
 	- You can find the page's id by hovering over its nav menu item.
-- If you use a wiki link to a page that doesn't exist, nothing will happen when you click it.
+- If you use a wiki link to a page that doesn't exist, it will create a new page with the linked text as the title.
 - When editing a page, pressing &lt;kbd&gt;Tab&lt;/kbd&gt; in the Markdown Content text area (also the Wiki CSS text area in Settings) will type a `Tab` character instead of changing focus to the next form element.
 	- Holding &lt;kbd&gt;Shift&lt;/kbd&gt; while pressing &lt;kbd&gt;Tab&lt;/kbd&gt; _will_ navigate to the previous element as expected.
 - You _can_ use HTML in the wiki name and description, but should you?
@@ -458,7 +465,7 @@ All the functions that control the app are set directly in the `window` and incl
 
 Below are all of the functions and global variables used to make **siteleteer** function with additional details to help clarify their use:
 
-- `add()`: Create a new page element &amp; start editing.
+- `add(title)`: Create a new page element &amp; start editing. If `title` is included, it will auto-fill the title field with that value.
 - `ce(tagName: string)`: Short alias of `document.getElementById`.
 - `current: string`: The current page id.
 - `del(pageId: string|number)`: Delete the page with the given id. Asks for confirmation before deletion.
@@ -560,6 +567,26 @@ It's important to note that UpUp will only work if you are serving the files fro
 <article hidden="true"></article>
 <footer>
 <time title="Created 2/13/2024, 6:00:18 PM">2/13/2024, 11:21:43 PM</time> <button class="dull editBtn" onclick="edit(1707872418096)">Edit</button>
+</footer></section><section id="1718405488555" style=""><h1>Upgrade Guide</h1>
+<pre>Upgrading siteleteer is admittedly not a streamlined process. If you haven't made any changes to the base siteleteer file, follow these steps to upgrade from a previous version:
+
+1. Open your old file in a text editor
+2. Find and copy everything after `<main>` up until you reach `</main>` (this is your content)
+3. Download the <a href="https://codeberg.org/Alamantus/siteleteer/raw/branch/main/siteleteer.html" download>newest siteleteer file</a>
+4. Open the new file in a text editor and find the `<main></main>` line
+5. Paste your content between the &gt; and the &lt; on the `<main></main>` line in the new file
+6. Save your file and open it in your web browser to make sure it looks right.
+7. Marvel at your upgraded siteleteer
+
+If you've changed the CSS at all, you will also need to copy that from the old file into the new one.
+
+If you have altered your siteleteer's Javascript or HTML structure at all, you will need to take a look at the changes to the source code and make the changes manually. Below is a list of each change and the associated Git commits that show exactly what was changed from the prior version.
+
+- [2024-06-14](https://codeberg.org/Alamantus/siteleteer/commit/af81167a3c0385ec5eb4e7cadfefe2d31e4d9eef)
+- [2024-03-27](https://codeberg.org/Alamantus/siteleteer/commit/651fb5a8d6f5f0aad13705c9e2ff57fb3556a7d8)</pre>
+<article hidden="true"></article>
+<footer>
+<time title="Created 6/14/2024, 4:51:28 PM">6/14/2024, 4:55:43 PM</time> <button class="dull editBtn" onclick="edit(1718405488555)">Edit</button>
 </footer></section></main>
 <footer style="padding:var(--pad);max-width:var(--max-width)">
 	Made <a href="https://codeberg.org/Alamantus/siteleteer" target="_blank">open source</a> with 💖 under an <a href="https://codeberg.org/Alamantus/siteleteer/src/branch/main/LICENSE" target="_blank">MIT license</a> by <a href="https://robbie.antenesse.net" target="_blank">Robbie Antenesse</a>
@@ -622,13 +649,17 @@ w.go = (page, back = false) => {
 	if (current) edit(current, false);
 	const pp = pages();
 	pp.forEach(el => show(el, false));
-	const pg = gebi(page) ?? pp.find(el => info(el).name === page) ?? pp[0];
+	const pg = gebi(page) ?? pp.find(el => info(el).name === page);
 	if (pg) {
 		const { name } = info(pg);
 		document.title = name;
 		if (!back) h(name);
 		show(pg);
 		current = pg.id;
+	} else if (page) {
+		add(page);
+	} else if (pp[0]) {
+		go(pp[0].id);
 	} else {
 		location.hash = '';
 	}
@@ -687,11 +718,11 @@ w.edit = (id, y = true) => {
 	}
 };
 // Create a new page Element & start editing
-w.add = () => {
+w.add = (title = '') => {
 	const p = ce('section');
 	p.id = Date.now();
 	const t = new Date().toLocaleString();
-	p.innerHTML = /*html*/`<h1></h1>
+	p.innerHTML = /*html*/`<h1>${title}</h1>
 <pre hidden></pre>
 <article></article>
 <footer>
@@ -793,7 +824,7 @@ w.save = () => {
 <head>${document.head.innerHTML}</head>
 <body>${document.body.innerHTML}</body></html>`;
 	render();
-	history.back();
+	if (pp[0] && pp[0].name !== h()) history.back();
 	// Create & click anchor tag with download attribute
 	const a = ce('a');
 	a.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(html));
