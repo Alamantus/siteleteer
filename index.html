@@ -467,7 +467,7 @@ All the functions that control the app are set directly in the `window` and incl
 Below are all of the functions and global variables used to make **siteleteer** function with additional details to help clarify their use:
 
 - `add(title)`: Create a new page element &amp; start editing. If `title` is included, it will auto-fill the title field with that value.
-- `ce(tagName: string)`: Short alias of `document.getElementById`.
+- `ce(tagName: string)`: Short alias of `document.createElement()`.
 - `current: string`: The current page id.
 - `del(pageId: string|number)`: Delete the page with the given id. Asks for confirmation before deletion.
 - `edit(pageId: string|number, yes: boolean = true)`: Show (default) or hide a form to edit the page with given id. Also updates nav entry.
@@ -503,7 +503,7 @@ Below are all of the functions and global variables used to make **siteleteer** 
 - Don't like the Markdown parser? Replace it! As long as whatever parser you use has its parse function set to `window.md()`, **siteleteer** should handle it fine!</pre>
 <article hidden="true"></article>
 <footer>
-<time title="Created 2/9/2024, 3:20:59 PM">2/16/2024, 9:34:21 AM</time> <button class="dull editButton" onclick="edit(1707517259013)">Edit</button>
+<time title="Created 2/9/2024, 3:20:59 PM">2/17/2025, 2:30:21 PM</time> <button class="dull editButton" onclick="edit(1707517259013)">Edit</button>
 </footer></section><section id="1707872418096" style=""><h1>Publishing</h1>
 <pre>If you're done working on your **siteleteer**'s content, all you really need to do to publish your work is upload the HTML file somewhere that can be accessed by a web browser. But if you want to present it in a way that looks a little more finalized, there are a few things you can do to make your finished product even better!
 
